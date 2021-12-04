@@ -12,7 +12,7 @@ public:
     Fillable();
     ~Fillable() {}
 
-    void fill(const Color& color);
+    void setFillColor(const Color& color);
     const Color& getFillColor() const;
 
     void beforeDrawFill(SDL_Renderer* renderer) const;

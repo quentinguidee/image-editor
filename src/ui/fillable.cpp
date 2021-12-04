@@ -5,7 +5,7 @@
 Fillable::Fillable() :
     fillColor(WHITE) {}
 
-void Fillable::fill(const Color& color)
+void Fillable::setFillColor(const Color& color)
 {
     fillColor = color;
 }
