@@ -29,7 +29,7 @@ void Window::run()
             running = event.type != SDL_QUIT;
         }
 
-        BLACK.useAsRenderDrawColor(renderer);
+        BACKGROUND.useAsRenderDrawColor(renderer);
 
         SDL_RenderClear(renderer);
 

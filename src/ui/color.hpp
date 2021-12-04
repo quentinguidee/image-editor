@@ -22,12 +22,18 @@ public:
     uint8_t getA() const;
 
     void useAsRenderDrawColor(SDL_Renderer* renderer) const;
+
+    static Color gray(uint8_t intensity);
 };
 
-static const Color BLACK = Color(0, 0, 0);
-static const Color WHITE = Color(255, 255, 255);
+static const Color BLACK = Color::gray(0);
+static const Color WHITE = Color::gray(255);
+
 static const Color RED = Color(255, 0, 0);
 static const Color GREEN = Color(0, 255, 0);
 static const Color BLUE = Color(0, 0, 255);
+
+static const Color BACKGROUND = Color::gray(14);
+static const Color BACKGROUND_DARK = Color::gray(8);
 
 #endif /* COLOR_HPP */

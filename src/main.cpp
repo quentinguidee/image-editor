@@ -5,7 +5,7 @@
 int main()
 {
     Rectangle rectangle = Rectangle();
-    rectangle.fill(RED);
+    rectangle.fill(BACKGROUND_DARK);
 
     Window window = Window("Image Editor", rectangle);
     window.run();
