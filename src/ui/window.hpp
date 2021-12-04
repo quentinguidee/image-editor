@@ -3,6 +3,8 @@
 
 #include <string>
 
+#include "view.hpp"
+
 using std::string;
 
 class Window
@@ -10,8 +12,10 @@ class Window
 private:
     string title;
 
+    const View& root;
+
 public:
-    Window(string title);
+    Window(const string& title, const View& root);
     ~Window() {}
 
     void run();
