@@ -59,6 +59,11 @@ bool Size::isUndefined() const
     return width.isUndefined() && height.isUndefined();
 }
 
+const Size1D& Size::operator[](uint8_t i) const
+{
+    return i == 0 ? width : height;
+}
+
 Size& Size::operator+=(const Size& rhs)
 {
     width += rhs.width;

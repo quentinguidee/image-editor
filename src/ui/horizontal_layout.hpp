@@ -1,11 +1,9 @@
 #ifndef HORIZONTAL_LAYOUT_HPP
 #define HORIZONTAL_LAYOUT_HPP
 
-#include "fillable.hpp"
-#include "layout.hpp"
-#include "rectangle.hpp"
+#include "linear_layout.hpp"
 
-class HorizontalLayout : public Layout
+class HorizontalLayout : public LinearLayout
 {
 private:
 public:

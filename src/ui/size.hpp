@@ -43,6 +43,8 @@ public:
     bool isInfinite() const;
     bool isUndefined() const;
 
+    const Size1D& operator[](uint8_t i) const;
+
     Size& operator+=(const Size& rhs);
     friend Size operator+(Size lhs, const Size& rhs);
 };
