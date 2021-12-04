@@ -11,6 +11,6 @@ void Rectangle::drawFill(SDL_Renderer *renderer) const
 {
     beforeDrawFill(renderer);
 
-    SDL_Rect rectangle{getX(), getY(), 20, 20};
+    SDL_Rect rectangle{getX(), getY(), getWidth(), getHeight()};
     SDL_RenderFillRect(renderer, &rectangle);
 }

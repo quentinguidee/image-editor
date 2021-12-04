@@ -2,7 +2,7 @@
 #define VIEW_HPP
 
 #include <SDL.h>
-#include <unistd.h>
+#include <stdint.h>
 
 struct Position
 {
