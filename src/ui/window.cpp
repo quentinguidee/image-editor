@@ -11,15 +11,25 @@ void Window::run()
 {
     SDL_Init(SDL_INIT_VIDEO);
 
-    SDL_Window* window = SDL_CreateWindow(
+    window = SDL_CreateWindow(
         title.c_str(),
         SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
         1000, 500,
         SDL_WINDOW_SHOWN);
 
-    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    SDL_Renderer* renderer = SDL_CreateRenderer(window, 0, SDL_RENDERER_ACCELERATED);
 
     bool running = true;
+
+    BACKGROUND.useAsRenderDrawColor(renderer);
+
+    SDL_RenderClear(renderer);
+
+    Size size = getSize();
+
+    root.draw(renderer, Position::ZERO, size);
+
+    SDL_RenderPresent(renderer);
 
     SDL_Event event;
     while (running)
@@ -28,15 +38,16 @@ void Window::run()
         {
             running = event.type != SDL_QUIT;
         }
-
-        BACKGROUND.useAsRenderDrawColor(renderer);
-
-        SDL_RenderClear(renderer);
-
-        root.draw(renderer);
-
-        SDL_RenderPresent(renderer);
     }
 
     SDL_Quit();
+}
+
+Size Window::getSize() const
+{
+    int width;
+    int height;
+
+    SDL_GetWindowSize(window, &width, &height);
+    return Size(width, height);
 }

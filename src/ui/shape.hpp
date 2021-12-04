@@ -4,10 +4,9 @@
 #include <SDL.h>
 
 #include "fillable.hpp"
-#include "resizable.hpp"
 #include "view.hpp"
 
-class Shape : public View, public Fillable, public Resizable
+class Shape : public View, public Fillable
 {
 private:
 public:

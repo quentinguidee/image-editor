@@ -1,16 +1,20 @@
 #include "view.hpp"
 
+#include "position.hpp"
+#include "size.hpp"
+
 View::View() :
-    position({0, 0})
+    position(Position::ZERO),
+    size(Size::ZERO)
 {
 }
 
-int16_t View::getX() const
+Position1D View::getX() const
 {
     return position.x;
 }
 
-int16_t View::getY() const
+Position1D View::getY() const
 {
     return position.y;
 }
@@ -34,4 +38,40 @@ void View::setPosition(int16_t x, int16_t y)
 {
     setX(x);
     setY(y);
+}
+
+Size1D View::getWidth() const
+{
+    return size.width;
+}
+
+Size1D View::getHeight() const
+{
+    return size.height;
+}
+
+Size View::getSize() const
+{
+    return size;
+}
+
+void View::setWidth(uint16_t value)
+{
+    size.width = value;
+}
+
+void View::setHeight(uint16_t value)
+{
+    size.height = value;
+}
+
+void View::setSize(uint16_t width, uint16_t height)
+{
+    setWidth(width);
+    setHeight(height);
+}
+
+void View::setSize(const Size& size)
+{
+    this->size = size;
 }
