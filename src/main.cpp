@@ -13,6 +13,8 @@ int main()
     rectangle.setSize(Size::INFINITE);
 
     Text text = Text("Title");
+    text.setFont(Font::BOLD);
+    text.uppercase();
 
     WidgetsPanel widgetsPanel = WidgetsPanel();
     widgetsPanel.setFillColor(BACKGROUND_DARK);

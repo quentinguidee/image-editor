@@ -2,6 +2,8 @@
 
 #include <SDL.h>
 
+#include <algorithm>
+
 #include "SDL_render.h"
 #include "color.hpp"
 
@@ -38,4 +40,9 @@ void Text::setTextColor(const Color &color)
 void Text::setFont(const Font &font)
 {
     this->font = font;
+}
+
+void Text::uppercase()
+{
+    std::transform(value.begin(), value.end(), value.begin(), ::toupper);
 }

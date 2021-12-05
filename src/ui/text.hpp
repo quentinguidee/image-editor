@@ -25,6 +25,8 @@ public:
 
     void setTextColor(const Color &color);
     void setFont(const Font &font);
+
+    void uppercase();
 };
 
 #endif /* TEXT_HPP */
