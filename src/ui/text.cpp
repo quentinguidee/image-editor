@@ -14,7 +14,7 @@ Text::Text(const string &value) :
 
 void Text::draw(SDL_Renderer *renderer, const Position &offset, const Size &forcedSize) const
 {
-    SDL_Surface *surface = TTF_RenderText_Solid(font.getTTFFont(), value.c_str(), textColor.toSDL());
+    SDL_Surface *surface = TTF_RenderText_Blended(font.getTTFFont(), value.c_str(), textColor.toSDL());
     SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
 
     SDL_Rect area{
