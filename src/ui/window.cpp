@@ -20,7 +20,7 @@ void Window::run()
         1000, 500,
         SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
 
-    SDL_Renderer* renderer = SDL_CreateRenderer(window, 0, SDL_RENDERER_ACCELERATED);
+    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);
 
     bool running = true;
 
