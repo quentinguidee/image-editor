@@ -2,14 +2,17 @@
 
 #include <SDL.h>
 
+#include "SDL_ttf.h"
 #include "color.hpp"
+#include "font.hpp"
 
 Window::Window(const string& title, const View& root) :
     title(title), root(root) {}
 
 void Window::run()
 {
-    SDL_Init(SDL_INIT_VIDEO);
+    if (!SDL_WasInit(SDL_INIT_VIDEO))
+        SDL_Init(SDL_INIT_VIDEO);
 
     window = SDL_CreateWindow(
         title.c_str(),
@@ -40,6 +43,7 @@ void Window::run()
         }
     }
 
+    TTF_Quit();
     SDL_Quit();
 }
 
