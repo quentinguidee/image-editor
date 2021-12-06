@@ -14,7 +14,7 @@ $(BUILD_DIRECTORY)/%.o: %.cpp
 	@$(CXX) -c $(CXXFLAGS) $< -o $@
 	@echo [CXX] $@
 
-main: $(OBJECTS)
+main: $(OBJECTS) src/main.cpp
 	@mkdir -p $(dir $@)
 	@$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJECTS) src/main.cpp -o main
 	@echo [CXX] main.cpp
