@@ -56,6 +56,11 @@ bool Position::isUndefined() const
     return x.isUndefined() && y.isUndefined();
 }
 
+const Position1D& Position::operator[](uint8_t i) const
+{
+    return i == 0 ? x : y;
+}
+
 Position& Position::operator+=(const Position& rhs)
 {
     x += rhs.x;

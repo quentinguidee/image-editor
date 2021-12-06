@@ -42,6 +42,8 @@ public:
     bool isInfinite() const;
     bool isUndefined() const;
 
+    const Position1D& operator[](uint8_t i) const;
+
     Position& operator+=(const Position& rhs);
     friend Position operator+(Position lhs, const Position& rhs);
 };

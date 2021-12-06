@@ -12,14 +12,9 @@ int main()
     rectangle.setFillColor(BACKGROUND);
     rectangle.setSize(Size::INFINITE);
 
-    Text text = Text("Title");
-    text.setFont(Font::BOLD);
-    text.uppercase();
-
     WidgetsPanel widgetsPanel = WidgetsPanel();
     widgetsPanel.setFillColor(BACKGROUND_DARK);
     widgetsPanel.setSize(Size(240, Size1D::INFINITE));
-    widgetsPanel.addView(text);
 
     HorizontalLayout root = HorizontalLayout();
     root.addView(rectangle);

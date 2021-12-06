@@ -67,6 +67,9 @@ void LinearLayout::drawStack(SDL_Renderer* renderer, const Position& offset, con
 
         view.draw(renderer, currentOffset, s);
 
-        currentOffset.x += Position1D(s.width);
+        if (dimension == 0)
+            currentOffset.x += Position1D(s.width);
+        else
+            currentOffset.y += Position1D(s.height);
     }
 }
