@@ -19,6 +19,9 @@ main: $(OBJECTS)
 	@$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJECTS) src/main.cpp -o main
 	@echo [CXX] main.cpp
 
+run:
+	@./main
+
 .PHONY: clean
 clean:
 	rm -rf main $(BUILD_DIRECTORY)
