@@ -19,7 +19,7 @@ main: $(OBJECTS) src/main.cpp
 	@$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJECTS) src/main.cpp -o main
 	@echo [CXX] main.cpp
 
-run:
+run: main
 	@./main
 
 .PHONY: clean
