@@ -1,3 +1,4 @@
+#include "editor/image_editor.hpp"
 #include "panels/widgets_panel.hpp"
 #include "ui/color.hpp"
 #include "ui/horizontal_layout.hpp"
@@ -8,16 +9,15 @@
 
 int main()
 {
-    Rectangle rectangle = Rectangle();
-    rectangle.setFillColor(BACKGROUND);
-    rectangle.setSize(Size::INFINITE);
+    ImageEditor imageEditor = ImageEditor();
+    imageEditor.setSize(Size::INFINITE);
 
     WidgetsPanel widgetsPanel = WidgetsPanel();
     widgetsPanel.setFillColor(BACKGROUND_DARK);
     widgetsPanel.setSize(Size(240, Size1D::INFINITE));
 
     HorizontalLayout root = HorizontalLayout();
-    root.addView(rectangle);
+    root.addView(imageEditor);
     root.addView(widgetsPanel);
     root.setSize(Size::UNDEFINED);
 
