@@ -20,9 +20,42 @@ void Window::run()
         1000, 500,
         SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
 
-    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);
+    renderer = SDL_CreateRenderer(window, -1, 0);
 
-    bool running = true;
+    running = true;
+
+    draw();
+
+    SDL_Event event;
+    while (running)
+    {
+        while (SDL_PollEvent(&event))
+        {
+            handleEvents(&event);
+        }
+    }
+
+    TTF_Quit();
+    SDL_Quit();
+}
+
+void Window::handleEvents(SDL_Event* event)
+{
+    switch (event->type)
+    {
+        case SDL_WINDOWEVENT:
+            if (event->window.event == SDL_WINDOWEVENT_SIZE_CHANGED)
+                draw();
+            break;
+        case SDL_QUIT:
+            running = false;
+            break;
+    }
+}
+
+void Window::draw()
+{
+    if (renderer == nullptr) return;
 
     BACKGROUND.useAsRenderDrawColor(renderer);
 
@@ -33,18 +66,6 @@ void Window::run()
     root.draw(renderer, Position::ZERO, size);
 
     SDL_RenderPresent(renderer);
-
-    SDL_Event event;
-    while (running)
-    {
-        while (SDL_PollEvent(&event))
-        {
-            running = event.type != SDL_QUIT;
-        }
-    }
-
-    TTF_Quit();
-    SDL_Quit();
 }
 
 Size Window::getSize() const
