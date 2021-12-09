@@ -70,9 +70,7 @@ void Window::draw()
 
 Size Window::getSize() const
 {
-    int width;
-    int height;
-
+    int width, height;
     SDL_GetWindowSize(window, &width, &height);
     return Size(width, height);
 }
