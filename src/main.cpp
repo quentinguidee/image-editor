@@ -11,7 +11,6 @@
 int main()
 {
     Toolbar toolbar = Toolbar();
-    toolbar.setSize(Size1D::INFINITE, 40);
 
     ImageEditor editor = ImageEditor();
     editor.setSize(Size::INFINITE);
