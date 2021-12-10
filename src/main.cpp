@@ -1,6 +1,5 @@
 #include "editor/image_editor.hpp"
 #include "panels/toolbar.hpp"
-#include "panels/widgets_panel.hpp"
 #include "ui/color.hpp"
 #include "ui/horizontal_layout.hpp"
 #include "ui/rectangle.hpp"
@@ -12,22 +11,14 @@
 int main()
 {
     Toolbar toolbar = Toolbar();
-    toolbar.setSize(Size1D::INFINITE, 32);
+    toolbar.setSize(Size1D::INFINITE, 40);
 
-    ImageEditor imageEditor = ImageEditor();
-    imageEditor.setSize(Size::INFINITE);
-
-    WidgetsPanel widgetsPanel = WidgetsPanel();
-    widgetsPanel.setSize(Size(240, Size1D::INFINITE));
-
-    HorizontalLayout content = HorizontalLayout();
-    content.addView(imageEditor);
-    content.addView(widgetsPanel);
-    content.setSize(Size::INFINITE);
+    ImageEditor editor = ImageEditor();
+    editor.setSize(Size::INFINITE);
 
     VerticalLayout root = VerticalLayout();
     root.addView(toolbar);
-    root.addView(content);
+    root.addView(editor);
     root.setSize(Size::INFINITE);
 
     string title = "Image Editor";
