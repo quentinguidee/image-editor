@@ -2,16 +2,16 @@
 
 #include <SDL.h>
 
-void Rectangle::draw(SDL_Renderer* renderer, const Position& offset, const Size& forcedSize) const
+void Rectangle::draw(SDL_Renderer* renderer, const Position& offset, const Size& maxSize) const
 {
-    drawFill(renderer, offset, forcedSize);
+    drawFill(renderer, offset, maxSize);
 }
 
-void Rectangle::drawFill(SDL_Renderer* renderer, const Position& offset, const Size& forcedSize) const
+void Rectangle::drawFill(SDL_Renderer* renderer, const Position& offset, const Size& maxSize) const
 {
     beforeDrawFill(renderer);
 
-    Size s = forcedSize.isUndefined() ? getSize() : forcedSize;
+    Size s = maxSize.isUndefined() ? getSize() : maxSize;
 
     SDL_Rect rectangle{
         getX() + offset.x,

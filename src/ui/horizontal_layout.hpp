@@ -10,7 +10,7 @@ public:
     HorizontalLayout();
     ~HorizontalLayout() {}
 
-    void draw(SDL_Renderer* renderer, const Position& offset, const Size& forcedSize) const override;
+    void draw(SDL_Renderer* renderer, const Position& offset, const Size& maxSize) const override;
 };
 
 #endif /* HORIZONTAL_LAYOUT_HPP */

@@ -9,9 +9,9 @@ Canvas::Canvas() :
     setPosition(300, 200);
 }
 
-void Canvas::draw(SDL_Renderer *renderer, const Position &offset, const Size &forcedSize) const
+void Canvas::draw(SDL_Renderer *renderer, const Position &offset, const Size &maxSize) const
 {
-    Size s = forcedSize.isUndefined() ? getSize() : forcedSize;
+    Size s = maxSize.isUndefined() ? getSize() : maxSize;
 
     int pixelSize = s.width / (float)image.getWidth();
 

@@ -11,7 +11,7 @@ public:
     LinearLayout();
     ~LinearLayout() {}
 
-    void drawStack(SDL_Renderer* renderer, const Position& offset, const Size& forcedSize, uint8_t dimension) const;
+    void drawStack(SDL_Renderer* renderer, const Position& offset, const Size& maxSize, uint8_t dimension) const;
 };
 
 #endif /* LINEAR_LAYOUT_HPP */

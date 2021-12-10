@@ -13,7 +13,7 @@ public:
     ImageEditor() {}
     ~ImageEditor() {}
 
-    void draw(SDL_Renderer *renderer, const Position &offset, const Size &forcedSize) const override;
+    void draw(SDL_Renderer *renderer, const Position &offset, const Size &maxSize) const override;
 };
 
 #endif /* IMAGE_EDITOR_HPP */

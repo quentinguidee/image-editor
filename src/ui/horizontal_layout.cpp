@@ -4,7 +4,7 @@ HorizontalLayout::HorizontalLayout()
 {
 }
 
-void HorizontalLayout::draw(SDL_Renderer* renderer, const Position& offset, const Size& forcedSize) const
+void HorizontalLayout::draw(SDL_Renderer* renderer, const Position& offset, const Size& maxSize) const
 {
-    drawStack(renderer, offset, forcedSize, 0);
+    drawStack(renderer, offset, maxSize, 0);
 }

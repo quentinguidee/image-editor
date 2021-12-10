@@ -10,7 +10,7 @@ public:
     VerticalLayout() {}
     ~VerticalLayout() {}
 
-    void draw(SDL_Renderer* renderer, const Position& offset, const Size& forcedSize) const override;
+    void draw(SDL_Renderer* renderer, const Position& offset, const Size& maxSize) const override;
 };
 
 #endif /* VERTICAL_LAYOUT_HPP */

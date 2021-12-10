@@ -18,7 +18,7 @@ public:
     const Color& getFillColor() const;
 
     void beforeDrawFill(SDL_Renderer* renderer) const;
-    virtual void drawFill(SDL_Renderer* renderer, const Position& offset, const Size& forcedSize) const = 0;
+    virtual void drawFill(SDL_Renderer* renderer, const Position& offset, const Size& maxSize) const = 0;
 };
 
 #endif /* FILLABLE_HPP */

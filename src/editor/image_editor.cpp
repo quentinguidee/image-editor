@@ -2,11 +2,11 @@
 
 #include "../ui/color.hpp"
 
-void ImageEditor::draw(SDL_Renderer *renderer, const Position &offset, const Size &forcedSize) const
+void ImageEditor::draw(SDL_Renderer *renderer, const Position &offset, const Size &maxSize) const
 {
     BACKGROUND.useAsRenderDrawColor(renderer);
 
-    Size s = forcedSize.isUndefined() ? getSize() : forcedSize;
+    Size s = maxSize.isUndefined() ? getSize() : maxSize;
 
     SDL_Rect rectangle{
         getX() + offset.x,

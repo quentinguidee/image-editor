@@ -24,7 +24,7 @@ public:
 
     const vector<reference_wrapper<const View>> &getViews() const;
 
-    void drawFill(SDL_Renderer *renderer, const Position &offset, const Size &forcedSize) const override;
+    void drawFill(SDL_Renderer *renderer, const Position &offset, const Size &maxSize) const override;
 };
 
 #endif /* LAYOUT_HPP */

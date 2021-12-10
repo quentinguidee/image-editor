@@ -17,7 +17,7 @@ public:
     View();
     ~View() {}
 
-    virtual void draw(SDL_Renderer* renderer, const Position& offset, const Size& forcedSize) const = 0;
+    virtual void draw(SDL_Renderer* renderer, const Position& offset, const Size& maxSize) const = 0;
 
     Position1D getX() const;
     Position1D getY() const;

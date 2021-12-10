@@ -15,13 +15,13 @@ LinearLayout::LinearLayout()
 {
 }
 
-void LinearLayout::drawStack(SDL_Renderer* renderer, const Position& offset, const Size& forcedSize, uint8_t dimension) const
+void LinearLayout::drawStack(SDL_Renderer* renderer, const Position& offset, const Size& maxSize, uint8_t dimension) const
 {
-    drawFill(renderer, offset, forcedSize);
+    drawFill(renderer, offset, maxSize);
 
     const vector<reference_wrapper<const View>> views = getViews();
 
-    Size1D maxSize = forcedSize[dimension].isUndefined() ? getSize()[dimension] : forcedSize[dimension];
+    Size1D realMaxSize = getSize()[dimension] > maxSize[dimension] ? maxSize[dimension] : getSize()[dimension];
     Size1D usedSize = Size1D(0);
     Size1D freeSize = Size1D(0);
 
@@ -38,7 +38,7 @@ void LinearLayout::drawStack(SDL_Renderer* renderer, const Position& offset, con
             usedSize += viewSize;
     }
 
-    freeSize = maxSize - usedSize;
+    freeSize = realMaxSize - usedSize;
 
     Size1D sizePerView = Size1D(fullSizeCount == 0 ? 0 : freeSize.width / fullSizeCount);
 
@@ -48,28 +48,34 @@ void LinearLayout::drawStack(SDL_Renderer* renderer, const Position& offset, con
     {
         const View& view = views[i].get();
 
-        Size s = view.getSize();
+        Size childMaxSize = view.getSize();
 
         if (dimension == 0)
         {
-            if (s.width.isInfinite())
-                s.width = sizePerView;
-            if (s.height > getSize().height)
-                s.height = getSize().height;
+            if (childMaxSize.width.isInfinite())
+                childMaxSize.width = sizePerView;
+
+            if (childMaxSize.height > getSize().height)
+                childMaxSize.height = getSize().height;
+            else if (childMaxSize.height > maxSize.height)
+                childMaxSize.height = maxSize.height;
         }
         else
         {
-            if (s.height.isInfinite())
-                s.height = sizePerView;
-            if (s.width > getSize().width)
-                s.width = getSize().width;
+            if (childMaxSize.height.isInfinite())
+                childMaxSize.height = sizePerView;
+
+            if (childMaxSize.width > getSize().width)
+                childMaxSize.width = getSize().width;
+            else if (childMaxSize.width > maxSize.width)
+                childMaxSize.width = maxSize.width;
         }
 
-        view.draw(renderer, currentOffset, s);
+        view.draw(renderer, currentOffset, childMaxSize);
 
         if (dimension == 0)
-            currentOffset.x += Position1D(s.width);
+            currentOffset.x += Position1D(childMaxSize.width);
         else
-            currentOffset.y += Position1D(s.height);
+            currentOffset.y += Position1D(childMaxSize.height);
     }
 }
