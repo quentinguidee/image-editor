@@ -16,7 +16,7 @@ void Window::run()
     window = SDL_CreateWindow(
         title.c_str(),
         SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-        1000, 500,
+        1400, 750,
         SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
 
     renderer = SDL_CreateRenderer(window, -1, 0);
