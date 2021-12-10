@@ -11,5 +11,5 @@ void ImageEditor::draw(SDL_Renderer *renderer, const Position &offset, const Siz
 
     SDL::drawRectangle(renderer, getPosition() + offset, size);
 
-    canvas.draw(renderer, offset, Size::UNDEFINED);
+    canvas.draw(renderer, offset, size);
 }

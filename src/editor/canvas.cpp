@@ -7,14 +7,17 @@ Canvas::Canvas() :
     image(30, 30)
 {
     setSize(100, 100);
-    setPosition(300, 200);
 }
 
 void Canvas::draw(SDL_Renderer *renderer, const Position &offset, const Size &maxSize) const
 {
-    Size s = maxSize.isUndefined() ? getSize() : maxSize;
+    Size size = getSize();
 
-    int pixelSize = s.width / (float)image.getWidth();
+    int pixelSize = size.width / (float)image.getWidth();
+
+    Position position = Position(
+        maxSize.width / 2 - size.width / 2,
+        maxSize.height / 2 - size.height / 2);
 
     const vector<Color> &pixels = image.getPixels();
     for (int x = 0; x < image.getWidth(); x++)
@@ -25,8 +28,8 @@ void Canvas::draw(SDL_Renderer *renderer, const Position &offset, const Size &ma
 
             SDL::drawRectangle(
                 renderer,
-                getX() + offset.x + Position1D(pixelSize * x),
-                getY() + offset.y + Position1D(pixelSize * y),
+                position.x + offset.x + Position1D(pixelSize * x),
+                position.y + offset.y + Position1D(pixelSize * y),
                 pixelSize,
                 pixelSize);
         }
