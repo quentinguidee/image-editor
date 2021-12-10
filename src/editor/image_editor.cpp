@@ -4,7 +4,7 @@
 
 void ImageEditor::draw(SDL_Renderer *renderer, const Position &offset, const Size &maxSize) const
 {
-    BACKGROUND.useAsRenderDrawColor(renderer);
+    Color::BACKGROUND.useAsRenderDrawColor(renderer);
 
     Size s = maxSize.isUndefined() ? getSize() : maxSize;
 

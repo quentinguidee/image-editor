@@ -10,7 +10,7 @@
 Text::Text(const string &value) :
     value(value),
     font(Font::REGULAR),
-    textColor(WHITE)
+    textColor(Color::WHITE)
 {
 }
 

@@ -1,6 +1,5 @@
 #include "widgets_panel.hpp"
 
-#include "../ui/color.hpp"
 #include "../widgets/transform_widget.hpp"
 
 WidgetsPanel::WidgetsPanel() :
@@ -8,5 +7,5 @@ WidgetsPanel::WidgetsPanel() :
 {
     addView(transformWidget);
 
-    setFillColor(BACKGROUND_DARKER);
+    setFillColor(Color::BACKGROUND_DARKER);
 }

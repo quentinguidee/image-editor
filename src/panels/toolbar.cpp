@@ -5,5 +5,5 @@ Toolbar::Toolbar() :
 {
     logo.setFont(Font::BOLD);
 
-    setFillColor(BACKGROUND_DARK);
+    setFillColor(Color::BACKGROUND_DARK);
 }

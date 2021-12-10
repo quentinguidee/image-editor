@@ -57,7 +57,7 @@ void Window::draw()
 {
     if (renderer == nullptr) return;
 
-    BACKGROUND.useAsRenderDrawColor(renderer);
+    Color::BACKGROUND.useAsRenderDrawColor(renderer);
 
     SDL_RenderClear(renderer);
 

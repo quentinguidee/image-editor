@@ -3,7 +3,7 @@
 #include "color.hpp"
 
 Fillable::Fillable() :
-    fillColor(WHITE) {}
+    fillColor(Color::WHITE) {}
 
 void Fillable::setFillColor(const Color& color)
 {

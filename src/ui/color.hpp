@@ -24,17 +24,17 @@ public:
     void useAsRenderDrawColor(SDL_Renderer* renderer) const;
 
     static Color gray(uint8_t intensity);
+
+    static const Color BLACK;
+    static const Color WHITE;
+
+    static const Color RED;
+    static const Color GREEN;
+    static const Color BLUE;
+
+    static const Color BACKGROUND;
+    static const Color BACKGROUND_DARK;
+    static const Color BACKGROUND_DARKER;
 };
-
-static const Color BLACK = Color::gray(0);
-static const Color WHITE = Color::gray(255);
-
-static const Color RED = Color(255, 0, 0);
-static const Color GREEN = Color(0, 255, 0);
-static const Color BLUE = Color(0, 0, 255);
-
-static const Color BACKGROUND = Color(18, 19, 21);
-static const Color BACKGROUND_DARK = Color(10, 10, 11);
-static const Color BACKGROUND_DARKER = Color(7, 8, 8);
 
 #endif /* COLOR_HPP */

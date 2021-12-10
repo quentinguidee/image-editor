@@ -41,3 +41,14 @@ Color Color::gray(uint8_t intensity)
 {
     return Color(intensity, intensity, intensity);
 }
+
+const Color Color::BLACK = Color::gray(0);
+const Color Color::WHITE = Color::gray(255);
+
+const Color Color::RED = Color(255, 0, 0);
+const Color Color::GREEN = Color(0, 255, 0);
+const Color Color::BLUE = Color(0, 0, 255);
+
+const Color Color::BACKGROUND = Color(18, 19, 21);
+const Color Color::BACKGROUND_DARK = Color(10, 10, 11);
+const Color Color::BACKGROUND_DARKER = Color(7, 8, 8);
