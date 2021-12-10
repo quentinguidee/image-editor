@@ -1,8 +1,7 @@
 #ifndef SHAPE_HPP
 #define SHAPE_HPP
 
-#include <SDL.h>
-
+#include "SDL.h"
 #include "fillable.hpp"
 #include "view.hpp"
 

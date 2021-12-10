@@ -1,9 +1,9 @@
 #ifndef VIEW_HPP
 #define VIEW_HPP
 
-#include <SDL.h>
 #include <stdint.h>
 
+#include "SDL.h"
 #include "position.hpp"
 #include "size.hpp"
 

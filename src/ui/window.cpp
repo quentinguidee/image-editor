@@ -1,7 +1,6 @@
 #include "window.hpp"
 
-#include <SDL.h>
-
+#include "SDL.h"
 #include "SDL_ttf.h"
 #include "color.hpp"
 #include "font.hpp"

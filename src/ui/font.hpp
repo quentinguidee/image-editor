@@ -1,9 +1,9 @@
 #ifndef FONT_HPP
 #define FONT_HPP
 
-#include <SDL_ttf.h>
-
 #include <string>
+
+#include "SDL_ttf.h"
 
 using std::string;
 

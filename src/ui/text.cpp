@@ -1,10 +1,8 @@
 #include "text.hpp"
 
-#include <SDL.h>
-
 #include <algorithm>
 
-#include "SDL_render.h"
+#include "SDL.h"
 #include "color.hpp"
 
 Text::Text(const string &value) :

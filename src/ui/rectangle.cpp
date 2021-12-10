@@ -1,6 +1,6 @@
 #include "rectangle.hpp"
 
-#include <SDL.h>
+#include "SDL.h"
 
 void Rectangle::draw(SDL_Renderer* renderer, const Position& offset, const Size& maxSize) const
 {

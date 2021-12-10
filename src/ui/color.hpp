@@ -1,9 +1,9 @@
 #ifndef COLOR_HPP
 #define COLOR_HPP
 
-#include <SDL.h>
-
 #include <cstdint>
+
+#include "SDL.h"
 
 class Color
 {
