@@ -18,7 +18,6 @@ int main()
     imageEditor.setSize(Size::INFINITE);
 
     WidgetsPanel widgetsPanel = WidgetsPanel();
-    widgetsPanel.setFillColor(BACKGROUND_DARK);
     widgetsPanel.setSize(Size(240, Size1D::INFINITE));
 
     HorizontalLayout content = HorizontalLayout();

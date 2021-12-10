@@ -33,7 +33,8 @@ static const Color RED = Color(255, 0, 0);
 static const Color GREEN = Color(0, 255, 0);
 static const Color BLUE = Color(0, 0, 255);
 
-static const Color BACKGROUND = Color::gray(14);
-static const Color BACKGROUND_DARK = Color::gray(8);
+static const Color BACKGROUND = Color(18, 19, 21);
+static const Color BACKGROUND_DARK = Color(10, 10, 11);
+static const Color BACKGROUND_DARKER = Color(7, 8, 8);
 
 #endif /* COLOR_HPP */
