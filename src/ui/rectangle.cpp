@@ -1,6 +1,6 @@
 #include "rectangle.hpp"
 
-#include "SDL.h"
+#include "sdl_draw.hpp"
 
 void Rectangle::draw(SDL_Renderer* renderer, const Position& offset, const Size& maxSize) const
 {
@@ -11,13 +11,7 @@ void Rectangle::drawFill(SDL_Renderer* renderer, const Position& offset, const S
 {
     beforeDrawFill(renderer);
 
-    Size s = maxSize.isUndefined() ? getSize() : maxSize;
+    Size size = maxSize.isUndefined() ? getSize() : maxSize;
 
-    SDL_Rect rectangle{
-        getX() + offset.x,
-        getY() + offset.y,
-        s.width,
-        s.height};
-
-    SDL_RenderFillRect(renderer, &rectangle);
+    SDL::drawRectangle(renderer, getPosition() + offset, size);
 }

@@ -1,20 +1,15 @@
 #include "image_editor.hpp"
 
 #include "../ui/color.hpp"
+#include "../ui/sdl_draw.hpp"
 
 void ImageEditor::draw(SDL_Renderer *renderer, const Position &offset, const Size &maxSize) const
 {
     Color::BACKGROUND.useAsRenderDrawColor(renderer);
 
-    Size s = maxSize.isUndefined() ? getSize() : maxSize;
+    Size size = maxSize.isUndefined() ? getSize() : maxSize;
 
-    SDL_Rect rectangle{
-        getX() + offset.x,
-        getY() + offset.y,
-        s.width,
-        s.height};
-
-    SDL_RenderFillRect(renderer, &rectangle);
+    SDL::drawRectangle(renderer, getPosition() + offset, size);
 
     canvas.draw(renderer, offset, Size::UNDEFINED);
 }

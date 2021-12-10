@@ -1,6 +1,7 @@
 #include "canvas.hpp"
 
 #include "../ui/color.hpp"
+#include "../ui/sdl_draw.hpp"
 
 Canvas::Canvas() :
     image(30, 30)
@@ -22,13 +23,12 @@ void Canvas::draw(SDL_Renderer *renderer, const Position &offset, const Size &ma
         {
             image.getPixel(x, y).useAsRenderDrawColor(renderer);
 
-            SDL_Rect rectangle{
+            SDL::drawRectangle(
+                renderer,
                 getX() + offset.x + Position1D(pixelSize * x),
                 getY() + offset.y + Position1D(pixelSize * y),
                 pixelSize,
-                pixelSize};
-
-            SDL_RenderFillRect(renderer, &rectangle);
+                pixelSize);
         }
     }
 }

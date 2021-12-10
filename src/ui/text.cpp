@@ -4,6 +4,7 @@
 
 #include "SDL.h"
 #include "color.hpp"
+#include "sdl_draw.hpp"
 
 Text::Text(const string &value) :
     value(value),
@@ -14,20 +15,7 @@ Text::Text(const string &value) :
 
 void Text::draw(SDL_Renderer *renderer, const Position &offset, const Size &maxSize) const
 {
-    SDL_Surface *surface = TTF_RenderText_Blended(font.getTTFFont(), value.c_str(), textColor.toSDL());
-    SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
-
-    SDL_Rect area{
-        getX() + offset.x,
-        getY() + offset.y,
-        surface->w,
-        surface->h,
-    };
-
-    SDL_RenderCopy(renderer, texture, NULL, &area);
-
-    SDL_FreeSurface(surface);
-    SDL_DestroyTexture(texture);
+    SDL::drawText(renderer, font, value, textColor, getPosition() + offset);
 }
 
 void Text::setTextColor(const Color &color)
