@@ -1,7 +1,8 @@
 #include "color.hpp"
 
 #include <cstdlib>
-#include <iostream>
+
+#include "sdl_draw.hpp"
 
 Color::Color(uint8_t r, uint8_t g, uint8_t b, uint8_t a) :
     r(r), g(g), b(b), a(a)
@@ -36,7 +37,7 @@ uint8_t Color::getA() const
 void Color::useAsRenderDrawColor(SDL_Renderer* renderer) const
 {
     if (SDL_SetRenderDrawColor(renderer, r, g, b, a))
-        std::cerr << SDL_GetError() << std::endl;
+        SDL::printError();
 }
 
 Color Color::gray(uint8_t intensity)
