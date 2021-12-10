@@ -1,10 +1,16 @@
-#include "image_editor.hpp"
+#include "canvas.hpp"
 
 #include "../ui/color.hpp"
 
-void ImageEditor::draw(SDL_Renderer *renderer, const Position &offset, const Size &forcedSize) const
+Canvas::Canvas()
 {
-    BACKGROUND.useAsRenderDrawColor(renderer);
+    setSize(100, 100);
+    setPosition(300, 200);
+}
+
+void Canvas::draw(SDL_Renderer *renderer, const Position &offset, const Size &forcedSize) const
+{
+    Color(100, 100, 200).useAsRenderDrawColor(renderer);
 
     Size s = forcedSize.isUndefined() ? getSize() : forcedSize;
 
@@ -15,6 +21,4 @@ void ImageEditor::draw(SDL_Renderer *renderer, const Position &offset, const Siz
         s.height};
 
     SDL_RenderFillRect(renderer, &rectangle);
-
-    canvas.draw(renderer, offset, Size::UNDEFINED);
 }

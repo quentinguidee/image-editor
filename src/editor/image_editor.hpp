@@ -2,10 +2,13 @@
 #define IMAGE_EDITOR_HPP
 
 #include "../ui/view.hpp"
+#include "canvas.hpp"
 
 class ImageEditor : public View
 {
 private:
+    Canvas canvas;
+
 public:
     ImageEditor() {}
     ~ImageEditor() {}
