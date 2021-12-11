@@ -146,6 +146,11 @@ void TTF::printError()
     std::cerr << TTF_GetError() << std::endl;
 }
 
+void IMG::drawImage(SDL_Renderer *renderer, const string &path, const Position &position)
+{
+    drawImage(renderer, path, position.x, position.y);
+}
+
 void IMG::drawImage(SDL_Renderer *renderer, const string &path, float x, float y)
 {
     SDL_Surface *surface = IMG_Load(path.c_str());

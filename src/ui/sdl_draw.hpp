@@ -42,6 +42,7 @@ void printError();
 
 namespace IMG {
 
+void drawImage(SDL_Renderer *renderer, const string &path, const Position &position);
 void drawImage(SDL_Renderer *renderer, const string &path, float x, float y);
 
 void printError();
