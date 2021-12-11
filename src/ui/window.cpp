@@ -1,6 +1,9 @@
 #include "window.hpp"
 
+#include <iostream>
+
 #include "SDL.h"
+#include "SDL_image.h"
 #include "SDL_ttf.h"
 #include "color.hpp"
 #include "font.hpp"
@@ -12,6 +15,9 @@ void Window::run()
 {
     if (!SDL_WasInit(SDL_INIT_VIDEO))
         SDL_Init(SDL_INIT_VIDEO);
+
+    if (!IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG))
+        std::cerr << IMG_GetError() << std::endl;
 
     window = SDL_CreateWindow(
         title.c_str(),
@@ -35,6 +41,7 @@ void Window::run()
     }
 
     TTF_Quit();
+    IMG_Quit();
     SDL_Quit();
 }
 

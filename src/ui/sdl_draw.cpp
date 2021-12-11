@@ -1,8 +1,11 @@
 #include "sdl_draw.hpp"
 
+#include <cstddef>
 #include <iostream>
 
+#include "SDL_image.h"
 #include "SDL_render.h"
+#include "SDL_surface.h"
 #include "position.hpp"
 
 void SDL::drawRectangle(SDL_Renderer *renderer, const Position &position, const Size &size)
@@ -130,4 +133,21 @@ void SDL::drawText(SDL_Renderer *renderer, const Font &font, const string &text,
 void SDL::printError()
 {
     std::cerr << SDL_GetError() << std::endl;
+}
+
+void SDL::drawImage(SDL_Renderer *renderer, const string &path, float x, float y)
+{
+    SDL_Surface *surface = IMG_Load(path.c_str());
+    if (surface == NULL)
+        std::cerr << IMG_GetError() << std::endl;
+
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
+
+    SDL_FRect area{x, y, (float)surface->w, (float)surface->h};
+
+    if (SDL_RenderCopyF(renderer, texture, NULL, &area))
+        printError();
+
+    SDL_FreeSurface(surface);
+    SDL_DestroyTexture(texture);
 }

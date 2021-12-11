@@ -30,6 +30,8 @@ void drawRoundedRectangle(SDL_Renderer *renderer, uint8_t radius, float x, float
 void drawText(SDL_Renderer *renderer, const Font &font, const string &text, Color color, const Position &position);
 void drawText(SDL_Renderer *renderer, const Font &font, const string &text, Color color, float x, float y);
 
+void drawImage(SDL_Renderer *renderer, const string &path, float x, float y);
+
 void printError();
 
 }  // namespace SDL
