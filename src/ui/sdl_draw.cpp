@@ -146,12 +146,12 @@ void TTF::printError()
     std::cerr << TTF_GetError() << std::endl;
 }
 
-void IMG::drawImage(SDL_Renderer *renderer, const string &path, const Position &position)
+void IMG::drawImage(SDL_Renderer *renderer, const string &path, const Position &position, const Size &size)
 {
-    drawImage(renderer, path, position.x, position.y);
+    drawImage(renderer, path, position.x, position.y, size.width, size.height);
 }
 
-void IMG::drawImage(SDL_Renderer *renderer, const string &path, float x, float y)
+void IMG::drawImage(SDL_Renderer *renderer, const string &path, float x, float y, float width, float height)
 {
     SDL_Surface *surface = IMG_Load(path.c_str());
     if (surface == NULL)
@@ -161,7 +161,7 @@ void IMG::drawImage(SDL_Renderer *renderer, const string &path, float x, float y
     if (texture == NULL)
         SDL::printError();
 
-    SDL_FRect area{x, y, (float)surface->w, (float)surface->h};
+    SDL_FRect area{x, y, width, height};
 
     if (SDL_RenderCopyF(renderer, texture, NULL, &area))
         SDL::printError();
