@@ -96,7 +96,7 @@ void SDL::drawRoundedRectangle(SDL_Renderer *renderer, uint8_t radius, float x, 
     drawRectangle(renderer, anchors[0], anchors[2]);
 
     // Borders
-    drawRectangle(renderer, Position(anchorAx, x), anchors[1]);
+    drawRectangle(renderer, Position(anchorAx, y), anchors[1]);
     drawRectangle(renderer, anchors[1], Position(x + width + 1, anchorBy));
     drawRectangle(renderer, anchors[3], Position(anchorBx, y + height + 1));
     drawRectangle(renderer, Position(x, anchorAy), anchors[3]);
