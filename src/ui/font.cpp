@@ -1,9 +1,6 @@
 #include "font.hpp"
 
-#include <iostream>
-
-using std::cerr;
-using std::endl;
+#include "sdl_draw.hpp"
 
 Font::Font(const string& path, uint8_t size) :
     path(path),
@@ -14,9 +11,7 @@ Font::Font(const string& path, uint8_t size) :
 
     font = TTF_OpenFont(path.c_str(), size);
     if (font == NULL)
-    {
-        std::cerr << TTF_GetError() << std::endl;
-    }
+        TTF::printError();
 }
 
 Font::~Font()

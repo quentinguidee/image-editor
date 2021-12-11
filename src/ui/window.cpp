@@ -7,6 +7,7 @@
 #include "SDL_ttf.h"
 #include "color.hpp"
 #include "font.hpp"
+#include "sdl_draw.hpp"
 
 Window::Window(const string& title, const View& root) :
     title(title), root(root) {}
@@ -17,7 +18,7 @@ void Window::run()
         SDL_Init(SDL_INIT_VIDEO);
 
     if (!IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG))
-        std::cerr << IMG_GetError() << std::endl;
+        IMG::printError();
 
     window = SDL_CreateWindow(
         title.c_str(),

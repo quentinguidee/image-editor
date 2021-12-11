@@ -27,13 +27,25 @@ void drawLine(SDL_Renderer *renderer, float startX, float startY, float endX, fl
 void drawRoundedRectangle(SDL_Renderer *renderer, uint8_t radius, const Position &position, const Size &size);
 void drawRoundedRectangle(SDL_Renderer *renderer, uint8_t radius, float x, float y, float width, float height);
 
+void printError();
+
+}  // namespace SDL
+
+namespace TTF {
+
 void drawText(SDL_Renderer *renderer, const Font &font, const string &text, Color color, const Position &position);
 void drawText(SDL_Renderer *renderer, const Font &font, const string &text, Color color, float x, float y);
+
+void printError();
+
+}  // namespace TTF
+
+namespace IMG {
 
 void drawImage(SDL_Renderer *renderer, const string &path, float x, float y);
 
 void printError();
 
-}  // namespace SDL
+}  // namespace IMG
 
 #endif /* SDL_DRAW_HPP */

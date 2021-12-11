@@ -15,7 +15,7 @@ Text::Text(const string &value) :
 
 void Text::draw(SDL_Renderer *renderer, const Position &offset, const Size &maxSize) const
 {
-    SDL::drawText(renderer, font, value, textColor, getPosition() + offset);
+    TTF::drawText(renderer, font, value, textColor, getPosition() + offset);
 }
 
 void Text::setTextColor(const Color &color)

@@ -22,7 +22,7 @@ void SDL::drawRectangle(SDL_Renderer *renderer, float x, float y, float width, f
 {
     SDL_FRect rectangle{x, y, width, height};
     if (SDL_RenderFillRectF(renderer, &rectangle))
-        printError();
+        SDL::printError();
 }
 
 void SDL::drawCircle(SDL_Renderer *renderer, uint16_t radius, const Position &position)
@@ -67,7 +67,8 @@ void SDL::drawLine(SDL_Renderer *renderer, const Position &start, const Position
 
 void SDL::drawLine(SDL_Renderer *renderer, float startX, float startY, float endX, float endY)
 {
-    SDL_RenderDrawLineF(renderer, startX, startY, endX, endY);
+    if (SDL_RenderDrawLineF(renderer, startX, startY, endX, endY))
+        SDL::printError();
 }
 
 void SDL::drawRoundedRectangle(SDL_Renderer *renderer, uint8_t radius, const Position &position, const Size &size)
@@ -111,43 +112,60 @@ void SDL::drawRoundedRectangle(SDL_Renderer *renderer, uint8_t radius, float x, 
     }
 }
 
-void SDL::drawText(SDL_Renderer *renderer, const Font &font, const string &text, Color color, const Position &position)
-{
-    drawText(renderer, font, text, color, position.x, position.y);
-}
-
-void SDL::drawText(SDL_Renderer *renderer, const Font &font, const string &text, Color color, float x, float y)
-{
-    SDL_Surface *surface = TTF_RenderText_Blended(font.getTTFFont(), text.c_str(), color.toSDL());
-    SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
-
-    SDL_FRect area{x, y, (float)surface->w, (float)surface->h};
-
-    if (SDL_RenderCopyF(renderer, texture, NULL, &area))
-        printError();
-
-    SDL_FreeSurface(surface);
-    SDL_DestroyTexture(texture);
-}
-
 void SDL::printError()
 {
     std::cerr << SDL_GetError() << std::endl;
 }
 
-void SDL::drawImage(SDL_Renderer *renderer, const string &path, float x, float y)
+void TTF::drawText(SDL_Renderer *renderer, const Font &font, const string &text, Color color, const Position &position)
 {
-    SDL_Surface *surface = IMG_Load(path.c_str());
+    drawText(renderer, font, text, color, position.x, position.y);
+}
+
+void TTF::drawText(SDL_Renderer *renderer, const Font &font, const string &text, Color color, float x, float y)
+{
+    SDL_Surface *surface = TTF_RenderText_Blended(font.getTTFFont(), text.c_str(), color.toSDL());
     if (surface == NULL)
-        std::cerr << IMG_GetError() << std::endl;
+        TTF::printError();
 
     SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
+    if (texture == NULL)
+        SDL::printError();
 
     SDL_FRect area{x, y, (float)surface->w, (float)surface->h};
 
     if (SDL_RenderCopyF(renderer, texture, NULL, &area))
-        printError();
+        SDL::printError();
 
     SDL_FreeSurface(surface);
     SDL_DestroyTexture(texture);
+}
+
+void TTF::printError()
+{
+    std::cerr << TTF_GetError() << std::endl;
+}
+
+void IMG::drawImage(SDL_Renderer *renderer, const string &path, float x, float y)
+{
+    SDL_Surface *surface = IMG_Load(path.c_str());
+    if (surface == NULL)
+        IMG::printError();
+
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
+    if (texture == NULL)
+        SDL::printError();
+
+    SDL_FRect area{x, y, (float)surface->w, (float)surface->h};
+
+    if (SDL_RenderCopyF(renderer, texture, NULL, &area))
+        SDL::printError();
+
+    SDL_FreeSurface(surface);
+    SDL_DestroyTexture(texture);
+}
+
+void IMG::printError()
+{
+    std::cerr << IMG_GetError() << std::endl;
 }
