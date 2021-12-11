@@ -22,6 +22,11 @@ bool Size1D::isUndefined() const
     return width == UINT16_MAX - 1;
 }
 
+void Size1D::ensureIsSmallerThan(const Size1D& maxWidth)
+{
+    if (width > maxWidth) this->width = maxWidth;
+}
+
 Size1D& Size1D::operator+=(const Size1D& rhs)
 {
     width += rhs.width;
@@ -57,6 +62,12 @@ bool Size::isInfinite() const
 bool Size::isUndefined() const
 {
     return width.isUndefined() && height.isUndefined();
+}
+
+void Size::ensureIsSmallerThan(const Size& maxSize)
+{
+    width.ensureIsSmallerThan(maxSize.width);
+    height.ensureIsSmallerThan(maxSize.height);
 }
 
 const Size1D& Size::operator[](uint8_t i) const

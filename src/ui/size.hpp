@@ -20,6 +20,8 @@ public:
     bool isInfinite() const;
     bool isUndefined() const;
 
+    void ensureIsSmallerThan(const Size1D& maxWidth);
+
     Size1D& operator+=(const Size1D& rhs);
     friend Size1D operator+(Size1D lhs, const Size1D& rhs);
 
@@ -42,6 +44,8 @@ public:
     bool isZero() const;
     bool isInfinite() const;
     bool isUndefined() const;
+
+    void ensureIsSmallerThan(const Size& maxSize);
 
     const Size1D& operator[](uint8_t i) const;
 
