@@ -1,5 +1,5 @@
 CXX := g++
-CXXFLAGS := -std=c++11 -I/usr/local/include/SDL2
+CXXFLAGS := -std=c++14 -I/usr/local/include/SDL2
 LDFLAGS := -L/usr/local/lib -lSDL2 -lSDL2_ttf
 
 BUILD_DIRECTORY = build
