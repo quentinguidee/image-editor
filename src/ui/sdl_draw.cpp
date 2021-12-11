@@ -5,12 +5,12 @@
 #include "SDL_render.h"
 #include "position.hpp"
 
-void SDL::drawRectangle(SDL_Renderer *renderer, Position position, Size size)
+void SDL::drawRectangle(SDL_Renderer *renderer, const Position &position, const Size &size)
 {
     drawRectangle(renderer, position.x, position.y, size.width, size.height);
 }
 
-void SDL::drawRectangle(SDL_Renderer *renderer, Position start, Position end)
+void SDL::drawRectangle(SDL_Renderer *renderer, const Position &start, const Position &end)
 {
     drawRectangle(renderer, start.x, start.y, end.x - start.x, end.y - start.y);
 }
@@ -22,7 +22,7 @@ void SDL::drawRectangle(SDL_Renderer *renderer, float x, float y, float width, f
         printError();
 }
 
-void SDL::drawCircle(SDL_Renderer *renderer, uint16_t radius, Position position)
+void SDL::drawCircle(SDL_Renderer *renderer, uint16_t radius, const Position &position)
 {
     drawCircle(renderer, radius, position.x, position.y);
 }
@@ -57,7 +57,7 @@ void SDL::drawCircle(SDL_Renderer *renderer, uint16_t radius, float x, float y)
     }
 }
 
-void SDL::drawLine(SDL_Renderer *renderer, Position start, Position end)
+void SDL::drawLine(SDL_Renderer *renderer, const Position &start, const Position &end)
 {
     drawLine(renderer, start.x, start.y, end.x, end.y);
 }
@@ -67,7 +67,7 @@ void SDL::drawLine(SDL_Renderer *renderer, float startX, float startY, float end
     SDL_RenderDrawLineF(renderer, startX, startY, endX, endY);
 }
 
-void SDL::drawRoundedRectangle(SDL_Renderer *renderer, uint8_t radius, Position position, Size size)
+void SDL::drawRoundedRectangle(SDL_Renderer *renderer, uint8_t radius, const Position &position, const Size &size)
 {
     drawRoundedRectangle(renderer, radius, position.x, position.y, size.width, size.height);
 }
@@ -108,7 +108,7 @@ void SDL::drawRoundedRectangle(SDL_Renderer *renderer, uint8_t radius, float x, 
     }
 }
 
-void SDL::drawText(SDL_Renderer *renderer, const Font &font, const string &text, Color color, Position position)
+void SDL::drawText(SDL_Renderer *renderer, const Font &font, const string &text, Color color, const Position &position)
 {
     drawText(renderer, font, text, color, position.x, position.y);
 }
