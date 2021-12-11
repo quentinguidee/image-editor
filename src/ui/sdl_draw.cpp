@@ -29,8 +29,6 @@ void SDL::drawCircle(SDL_Renderer *renderer, uint16_t radius, Position position)
 
 void SDL::drawCircle(SDL_Renderer *renderer, uint16_t radius, float x, float y)
 {
-    //drawRectangle(renderer, x - radius, y - radius, x + radius, y + radius);
-
     // Using a variant of the circle algorithm
     // which also fills the circle.
     drawLine(renderer, x - radius, y, x + radius, y);
