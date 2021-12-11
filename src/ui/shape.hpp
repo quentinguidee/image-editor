@@ -10,7 +10,7 @@ class Shape : public View, public Fillable
 private:
 public:
     Shape() {}
-    ~Shape() {}
+    virtual ~Shape() {}
 };
 
 #endif /* SHAPE_HPP */

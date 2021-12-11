@@ -4,14 +4,15 @@
 #include <functional>
 #include <vector>
 
-#include "fillable.hpp"
+#include "has_background.hpp"
 #include "rectangle.hpp"
+#include "shape.hpp"
 #include "view.hpp"
 
 using std::reference_wrapper;
 using std::vector;
 
-class Layout : public View, public Fillable
+class Layout : public View, public HasBackground
 {
 private:
     vector<reference_wrapper<const View>> views;
@@ -23,8 +24,6 @@ public:
     void addView(const View &view);
 
     const vector<reference_wrapper<const View>> &getViews() const;
-
-    void drawFill(SDL_Renderer *renderer, const Position &offset, const Size &maxSize) const override;
 };
 
 #endif /* LAYOUT_HPP */

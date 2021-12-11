@@ -5,6 +5,7 @@
 Layout::Layout() :
     views(vector<reference_wrapper<const View>>())
 {
+    setBackgroundShape(new Rectangle());
 }
 
 void Layout::addView(const View& view)
@@ -15,12 +16,4 @@ void Layout::addView(const View& view)
 const vector<reference_wrapper<const View>>& Layout::getViews() const
 {
     return views;
-}
-
-void Layout::drawFill(SDL_Renderer* renderer, const Position& offset, const Size& maxSize) const
-{
-    Rectangle background = Rectangle();
-    background.setFillColor(getFillColor());
-
-    background.draw(renderer, offset, maxSize);
 }
