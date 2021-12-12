@@ -26,6 +26,16 @@ Position1D& Position1D::operator+=(const Position1D& rhs)
     return *this;
 }
 
+bool Position1D::operator>(const Position1D& rhs) const
+{
+    return x > rhs.x;
+}
+
+bool Position1D::operator<(const Position1D& rhs) const
+{
+    return x < rhs.x;
+}
+
 Position1D operator+(Position1D lhs, const Position1D& rhs)
 {
     lhs.x += rhs.x;
