@@ -12,7 +12,8 @@ HasBackground::HasBackground() :
 
 HasBackground::~HasBackground()
 {
-    delete shape;
+    if (shape != nullptr)
+        delete shape;
 }
 
 void HasBackground::setBackgroundShape(Shape* shape)

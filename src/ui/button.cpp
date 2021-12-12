@@ -11,3 +11,18 @@ Button::Button()
     background->setSize(getSize());
     setBackgroundShape(background);
 }
+
+void Button::useToggleBehaviour()
+{
+    isToggle = true;
+}
+
+bool Button::isPressed() const
+{
+    return toggled;
+}
+
+void Button::toggle()
+{
+    toggled = !toggled;
+}
