@@ -22,6 +22,8 @@ public:
     Position1D& operator+=(const Position1D& rhs);
     bool operator>(const Position1D& rhs) const;
     bool operator<(const Position1D& rhs) const;
+    bool operator>=(const Position1D& rhs) const;
+    bool operator<=(const Position1D& rhs) const;
     friend Position1D operator+(Position1D lhs, const Position1D& rhs);
 
     operator int16_t() const { return x; }
