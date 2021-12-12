@@ -43,8 +43,8 @@ public:
     Size1D getHeight() const;
     Size getSize() const;
 
-    void setWidth(uint16_t value);
-    void setHeight(uint16_t value);
+    virtual void setWidth(uint16_t value);
+    virtual void setHeight(uint16_t value);
     void setSize(uint16_t width, uint16_t height);
     void setSize(const Size& size);
 };

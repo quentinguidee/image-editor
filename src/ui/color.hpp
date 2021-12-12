@@ -28,6 +28,8 @@ public:
     static const Color BLACK;
     static const Color WHITE;
 
+    static const Color TRANSPARENT;
+
     static const Color RED;
     static const Color GREEN;
     static const Color BLUE;

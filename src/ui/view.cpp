@@ -88,5 +88,6 @@ void View::setSize(uint16_t width, uint16_t height)
 
 void View::setSize(const Size& size)
 {
-    this->size = size;
+    setWidth(size.width);
+    setHeight(size.height);
 }

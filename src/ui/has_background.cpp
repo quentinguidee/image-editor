@@ -7,6 +7,7 @@
 HasBackground::HasBackground() :
     shape(new Rectangle())
 {
+    setFillColor(Color::TRANSPARENT);
 }
 
 HasBackground::~HasBackground()
