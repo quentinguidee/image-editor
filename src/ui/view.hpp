@@ -13,6 +13,10 @@
 using std::reference_wrapper;
 using std::vector;
 
+class View;
+
+typedef vector<reference_wrapper<View>> Views;
+
 class View
 {
 private:
@@ -25,7 +29,7 @@ public:
 
     virtual void draw(SDL_Renderer* renderer, const Position& offset, const Size& maxSize) = 0;
     virtual void processMouseEvent(SDL_MouseButtonEvent& event, int x, int y);
-    virtual vector<reference_wrapper<View>> getSubviews();
+    virtual Views getSubviews();
 
     Position1D getX() const;
     Position1D getY() const;
@@ -44,7 +48,5 @@ public:
     void setSize(uint16_t width, uint16_t height);
     void setSize(const Size& size);
 };
-
-typedef vector<reference_wrapper<View>> Views;
 
 #endif /* VIEW_HPP */
