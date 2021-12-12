@@ -1,6 +1,7 @@
 #include "image_button.hpp"
 
 #include "img.hpp"
+#include "position.hpp"
 #include "view.hpp"
 
 ImageButton::ImageButton(const string &imagePath) :
@@ -29,7 +30,11 @@ Img &ImageButton::getImage()
 
 void ImageButton::draw(SDL_Renderer *renderer, const Position &offset, const Size &maxSize)
 {
-    drawFill(renderer, offset + getPosition(), maxSize);
+    Position position = getPosition() + offset;
+    setDrawingPosition(position);
 
-    image.draw(renderer, offset + getPosition(), maxSize);
+    drawFill(renderer, position, maxSize);
+    setDrawingSize(getBackgroundShape()->getDrawingSize());
+
+    image.draw(renderer, position, maxSize);
 }

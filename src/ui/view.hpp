@@ -23,6 +23,9 @@ private:
     Position position;
     Size size;
 
+    Position drawingPosition;
+    Size drawingSize;
+
 public:
     View();
     ~View() {}
@@ -47,6 +50,12 @@ public:
     virtual void setHeight(uint16_t value);
     void setSize(uint16_t width, uint16_t height);
     void setSize(const Size& size);
+
+    void setDrawingPosition(const Position& position);
+    void setDrawingSize(const Size& size);
+
+    const Position& getDrawingPosition() const;
+    const Size& getDrawingSize() const;
 };
 
 #endif /* VIEW_HPP */

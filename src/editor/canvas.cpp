@@ -12,12 +12,16 @@ Canvas::Canvas() :
 void Canvas::draw(SDL_Renderer *renderer, const Position &offset, const Size &maxSize)
 {
     Size size = getSize();
+    size.ensureIsSmallerThan(maxSize);
+    setDrawingSize(size);
 
     int pixelSize = size.width / (float)image.getWidth();
 
     Position position = Position(
         maxSize.width / 2 - size.width / 2,
         maxSize.height / 2 - size.height / 2);
+
+    setDrawingPosition(position);
 
     const vector<Color> &pixels = image.getPixels();
     for (int x = 0; x < image.getWidth(); x++)

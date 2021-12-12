@@ -17,9 +17,14 @@ void ImageEditor::draw(SDL_Renderer *renderer, const Position &offset, const Siz
 {
     Color::BACKGROUND.useAsRenderDrawColor(renderer);
 
-    Size size = maxSize.isUndefined() ? getSize() : maxSize;
+    Position position = getPosition() + offset;
+    setDrawingPosition(position);
 
-    SDL::drawRectangle(renderer, getPosition() + offset, size);
+    Size size = maxSize.isUndefined() ? getSize() : maxSize;
+    size.ensureIsSmallerThan(maxSize);
+    setDrawingSize(size);
+
+    SDL::drawRectangle(renderer, position, size);
 
     canvas.draw(renderer, offset, size);
 

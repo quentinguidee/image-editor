@@ -4,6 +4,7 @@
 
 #include "SDL.h"
 #include "color.hpp"
+#include "position.hpp"
 #include "sdl_draw.hpp"
 
 Text::Text(const string &value) :
@@ -15,7 +16,10 @@ Text::Text(const string &value) :
 
 void Text::draw(SDL_Renderer *renderer, const Position &offset, const Size &maxSize)
 {
-    TTF::drawText(renderer, font, value, textColor, getPosition() + offset);
+    Position position = getPosition() + offset;
+    setDrawingPosition(position);
+
+    TTF::drawText(renderer, font, value, textColor, position);
 }
 
 void Text::setTextColor(const Color &color)

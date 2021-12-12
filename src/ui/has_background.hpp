@@ -14,6 +14,7 @@ public:
     ~HasBackground();
 
     void setBackgroundShape(Shape* shape);
+    const Shape* getBackgroundShape() const;
 
     void drawFill(SDL_Renderer* renderer, const Position& offset, const Size& maxSize) override;
 };

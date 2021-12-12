@@ -8,7 +8,9 @@
 
 View::View() :
     position(Position::ZERO),
-    size(Size::ZERO)
+    size(Size::ZERO),
+    drawingPosition(Position::ZERO),
+    drawingSize(Size::ZERO)
 {
 }
 
@@ -90,4 +92,24 @@ void View::setSize(const Size& size)
 {
     setWidth(size.width);
     setHeight(size.height);
+}
+
+void View::setDrawingPosition(const Position& position)
+{
+    drawingPosition = position;
+}
+
+void View::setDrawingSize(const Size& size)
+{
+    drawingSize = size;
+}
+
+const Position& View::getDrawingPosition() const
+{
+    return drawingPosition;
+}
+
+const Size& View::getDrawingSize() const
+{
+    return drawingSize;
 }

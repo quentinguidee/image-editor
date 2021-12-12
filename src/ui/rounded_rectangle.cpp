@@ -1,5 +1,6 @@
 #include "rounded_rectangle.hpp"
 
+#include "position.hpp"
 #include "sdl_draw.hpp"
 
 void RoundedRectangle::setRadius(uint8_t radius)
@@ -16,9 +17,12 @@ void RoundedRectangle::drawFill(SDL_Renderer* renderer, const Position& offset, 
 {
     beforeDrawFill(renderer);
 
+    Position position = getPosition() + offset;
+    setDrawingPosition(position);
+
     Size size = getSize();
-
     size.ensureIsSmallerThan(maxSize);
+    setDrawingSize(size);
 
-    SDL::drawRoundedRectangle(renderer, radius, getPosition() + offset, size);
+    SDL::drawRoundedRectangle(renderer, radius, position, size);
 }

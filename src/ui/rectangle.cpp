@@ -11,7 +11,12 @@ void Rectangle::drawFill(SDL_Renderer* renderer, const Position& offset, const S
 {
     beforeDrawFill(renderer);
 
-    Size size = maxSize.isUndefined() ? getSize() : maxSize;
+    Position position = getPosition() + offset;
+    setDrawingPosition(position);
 
-    SDL::drawRectangle(renderer, getPosition() + offset, size);
+    Size size = maxSize.isUndefined() ? getSize() : maxSize;
+    size.ensureIsSmallerThan(maxSize);
+    setDrawingSize(size);
+
+    SDL::drawRectangle(renderer, position, size);
 }

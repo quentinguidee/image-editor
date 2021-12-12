@@ -17,9 +17,15 @@ void LinearLayout::drawStack(SDL_Renderer* renderer, const Position& offset, con
 {
     drawFill(renderer, offset, maxSize);
 
+    setDrawingPosition(getPosition() + offset);
+
+    Size size = getSize();
+    size.ensureIsSmallerThan(maxSize);
+    setDrawingSize(size);
+
     Views views = getSubviews();
 
-    Size1D realMaxSize = getSize()[dimension] > maxSize[dimension] ? maxSize[dimension] : getSize()[dimension];
+    Size1D realMaxSize = size[dimension];
     Size1D usedSize = Size1D(0);
     Size1D freeSize = Size1D(0);
 
