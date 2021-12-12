@@ -13,7 +13,7 @@ class Window
 private:
     string title;
 
-    const View& root;
+    View& root;
 
     bool running = false;
 
@@ -21,7 +21,7 @@ private:
     SDL_Renderer* renderer = nullptr;
 
 public:
-    Window(const string& title, const View& root);
+    Window(const string& title, View& root);
     ~Window() {}
 
     void run();

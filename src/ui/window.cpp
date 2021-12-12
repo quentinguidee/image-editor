@@ -9,7 +9,7 @@
 #include "font.hpp"
 #include "sdl_draw.hpp"
 
-Window::Window(const string& title, const View& root) :
+Window::Window(const string& title, View& root) :
     title(title), root(root) {}
 
 void Window::run()
@@ -57,6 +57,8 @@ void Window::handleEvents(SDL_Event* event)
         case SDL_QUIT:
             running = false;
             break;
+        case SDL_MOUSEBUTTONDOWN:
+            root.processMouseEvent(event->button, 0, 0);
     }
 }
 

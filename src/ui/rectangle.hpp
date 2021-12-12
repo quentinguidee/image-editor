@@ -11,8 +11,8 @@ public:
     Rectangle() {}
     ~Rectangle() {}
 
-    void draw(SDL_Renderer* renderer, const Position& offset, const Size& maxSize) const override;
-    void drawFill(SDL_Renderer* renderer, const Position& offset, const Size& maxSize) const override;
+    void draw(SDL_Renderer* renderer, const Position& offset, const Size& maxSize) override;
+    void drawFill(SDL_Renderer* renderer, const Position& offset, const Size& maxSize) override;
 };
 
 #endif /* RECTANGLE_HPP */

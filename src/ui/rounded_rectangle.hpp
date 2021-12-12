@@ -14,8 +14,8 @@ public:
 
     void setRadius(uint8_t radius);
 
-    void draw(SDL_Renderer* renderer, const Position& offset, const Size& maxSize) const override;
-    void drawFill(SDL_Renderer* renderer, const Position& offset, const Size& maxSize) const override;
+    void draw(SDL_Renderer* renderer, const Position& offset, const Size& maxSize) override;
+    void drawFill(SDL_Renderer* renderer, const Position& offset, const Size& maxSize) override;
 };
 
 #endif /* ROUNDED_RECTANGLE_HPP */

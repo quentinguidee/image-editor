@@ -21,7 +21,7 @@ public:
     Text(const string &value);
     ~Text() {}
 
-    void draw(SDL_Renderer *renderer, const Position &offset, const Size &maxSize) const override;
+    void draw(SDL_Renderer *renderer, const Position &offset, const Size &maxSize) override;
 
     void setTextColor(const Color &color);
     void setFont(const Font &font);

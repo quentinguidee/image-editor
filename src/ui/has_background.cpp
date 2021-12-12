@@ -19,7 +19,7 @@ void HasBackground::setBackgroundShape(Shape* shape)
     this->shape = shape;
 }
 
-void HasBackground::drawFill(SDL_Renderer* renderer, const Position& offset, const Size& maxSize) const
+void HasBackground::drawFill(SDL_Renderer* renderer, const Position& offset, const Size& maxSize)
 {
     shape->setFillColor(getFillColor());
     shape->draw(renderer, offset, maxSize);

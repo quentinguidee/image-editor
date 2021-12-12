@@ -13,7 +13,7 @@ public:
     Canvas();
     ~Canvas() {}
 
-    void draw(SDL_Renderer *renderer, const Position &offset, const Size &maxSize) const override;
+    void draw(SDL_Renderer *renderer, const Position &offset, const Size &maxSize) override;
 };
 
 #endif /* CANVAS_HPP */

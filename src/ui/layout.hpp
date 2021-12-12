@@ -9,21 +9,18 @@
 #include "shape.hpp"
 #include "view.hpp"
 
-using std::reference_wrapper;
-using std::vector;
-
 class Layout : public View, public HasBackground
 {
 private:
-    vector<reference_wrapper<const View>> views;
+    Views views;
 
 public:
     Layout();
     ~Layout() {}
 
-    void addView(const View &view);
+    Views getSubviews() override;
 
-    const vector<reference_wrapper<const View>> &getViews() const;
+    void addView(View &view);
 };
 
 #endif /* LAYOUT_HPP */

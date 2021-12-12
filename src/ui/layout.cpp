@@ -3,17 +3,17 @@
 #include "rectangle.hpp"
 
 Layout::Layout() :
-    views(vector<reference_wrapper<const View>>())
+    views(Views())
 {
     setBackgroundShape(new Rectangle());
 }
 
-void Layout::addView(const View& view)
+void Layout::addView(View& view)
 {
     views.push_back(view);
 }
 
-const vector<reference_wrapper<const View>>& Layout::getViews() const
+Views Layout::getSubviews()
 {
     return views;
 }

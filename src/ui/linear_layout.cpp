@@ -7,19 +7,17 @@
 #include "position.hpp"
 #include "rectangle.hpp"
 #include "size.hpp"
-
-using std::reference_wrapper;
-using std::vector;
+#include "view.hpp"
 
 LinearLayout::LinearLayout()
 {
 }
 
-void LinearLayout::drawStack(SDL_Renderer* renderer, const Position& offset, const Size& maxSize, uint8_t dimension) const
+void LinearLayout::drawStack(SDL_Renderer* renderer, const Position& offset, const Size& maxSize, uint8_t dimension)
 {
     drawFill(renderer, offset, maxSize);
 
-    const vector<reference_wrapper<const View>> views = getViews();
+    Views views = getSubviews();
 
     Size1D realMaxSize = getSize()[dimension] > maxSize[dimension] ? maxSize[dimension] : getSize()[dimension];
     Size1D usedSize = Size1D(0);
@@ -46,7 +44,7 @@ void LinearLayout::drawStack(SDL_Renderer* renderer, const Position& offset, con
 
     for (int i = 0; i < views.size(); i++)
     {
-        const View& view = views[i].get();
+        View& view = views[i].get();
 
         Size childMaxSize = view.getSize();
 

@@ -9,7 +9,7 @@ Canvas::Canvas() :
     setSize(100, 100);
 }
 
-void Canvas::draw(SDL_Renderer *renderer, const Position &offset, const Size &maxSize) const
+void Canvas::draw(SDL_Renderer *renderer, const Position &offset, const Size &maxSize)
 {
     Size size = getSize();
 

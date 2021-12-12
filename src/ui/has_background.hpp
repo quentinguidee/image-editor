@@ -15,7 +15,7 @@ public:
 
     void setBackgroundShape(Shape* shape);
 
-    void drawFill(SDL_Renderer* renderer, const Position& offset, const Size& maxSize) const override;
+    void drawFill(SDL_Renderer* renderer, const Position& offset, const Size& maxSize) override;
 };
 
 #endif /* HAS_BACKGROUND_HPP */

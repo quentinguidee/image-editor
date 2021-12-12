@@ -13,7 +13,7 @@ Text::Text(const string &value) :
 {
 }
 
-void Text::draw(SDL_Renderer *renderer, const Position &offset, const Size &maxSize) const
+void Text::draw(SDL_Renderer *renderer, const Position &offset, const Size &maxSize)
 {
     TTF::drawText(renderer, font, value, textColor, getPosition() + offset);
 }

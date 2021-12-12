@@ -7,7 +7,7 @@ Img::Img(const string &path) :
 {
 }
 
-void Img::draw(SDL_Renderer *renderer, const Position &offset, const Size &maxSize) const
+void Img::draw(SDL_Renderer *renderer, const Position &offset, const Size &maxSize)
 {
     IMG::drawImage(renderer, path, getPosition() + offset, getSize());
 }

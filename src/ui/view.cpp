@@ -1,5 +1,8 @@
 #include "view.hpp"
 
+#include <functional>
+#include <vector>
+
 #include "position.hpp"
 #include "size.hpp"
 
@@ -7,6 +10,18 @@ View::View() :
     position(Position::ZERO),
     size(Size::ZERO)
 {
+}
+
+void View::processMouseEvent(SDL_MouseButtonEvent& event, int x, int y)
+{
+    Views views = getSubviews();
+    for (int i = 0; i < views.size(); i++)
+        views[i].get().processMouseEvent(event, x, y);
+}
+
+Views View::getSubviews()
+{
+    return Views();
 }
 
 Position1D View::getX() const
