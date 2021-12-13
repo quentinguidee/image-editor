@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "SDL.h"
+#include "SDL_events.h"
 #include "area.hpp"
 #include "position.hpp"
 #include "size.hpp"
@@ -30,6 +31,7 @@ private:
     bool mustRedraw = true;
 
     std::function<void(const Position&)> onClick;
+    std::function<void(const Position&, float, float)> onScroll;
 
 public:
     View();
@@ -68,9 +70,12 @@ public:
     const Area getDrawingArea() const;
 
     // Events
-    void propagateMouseEvent(SDL_MouseButtonEvent& event, const Position& position);
+    void propagateEvent(SDL_Event& event, const Position& position);
     void onMouseEvent(SDL_MouseButtonEvent& event, const Position& position);
+    void onMouseWheelEvent(SDL_MouseWheelEvent& event, const Position& position);
+
     void setOnClick(std::function<void(const Position&)> onClick);
+    void setOnScroll(std::function<void(const Position& position, float, float)> onScroll);
 };
 
 #endif /* VIEW_HPP */

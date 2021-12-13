@@ -4,7 +4,6 @@
 
 #include "SDL.h"
 #include "SDL_image.h"
-#include "SDL_mouse.h"
 #include "SDL_ttf.h"
 #include "color.hpp"
 #include "font.hpp"
@@ -60,7 +59,11 @@ void Window::handleEvents(SDL_Event* event)
             running = false;
             break;
         case SDL_MOUSEBUTTONDOWN:
-            root.propagateMouseEvent(event->button, getMousePosition());
+            root.propagateEvent(*event, getMousePosition());
+            break;
+        case SDL_MOUSEWHEEL:
+            root.propagateEvent(*event, getMousePosition());
+            break;
     }
 }
 

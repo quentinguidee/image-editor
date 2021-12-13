@@ -118,14 +118,24 @@ const Area View::getDrawingArea() const
     return Area(getDrawingPosition(), getDrawingSize());
 }
 
-void View::propagateMouseEvent(SDL_MouseButtonEvent& event, const Position& position)
+void View::propagateEvent(SDL_Event& event, const Position& position)
 {
     if (getDrawingArea().contains(position))
-        onMouseEvent(event, position);
+    {
+        switch (event.type)
+        {
+            case SDL_MOUSEBUTTONDOWN:
+                onMouseEvent(event.button, position);
+                break;
+            case SDL_MOUSEWHEEL:
+                onMouseWheelEvent(event.wheel, position);
+                break;
+        }
+    }
 
     Views views = getSubviews();
     for (int i = 0; i < views.size(); i++)
-        views[i].get().propagateMouseEvent(event, position);
+        views[i].get().propagateEvent(event, position);
 }
 
 void View::onMouseEvent(SDL_MouseButtonEvent& event, const Position& position)
@@ -138,7 +148,17 @@ void View::onMouseEvent(SDL_MouseButtonEvent& event, const Position& position)
     }
 }
 
+void View::onMouseWheelEvent(SDL_MouseWheelEvent& event, const Position& position)
+{
+    if (onScroll) onScroll(position, event.preciseX, event.preciseY);
+}
+
 void View::setOnClick(std::function<void(const Position&)> onClick)
 {
     this->onClick = onClick;
+}
+
+void View::setOnScroll(std::function<void(const Position&, float, float)> onScroll)
+{
+    this->onScroll = onScroll;
 }

@@ -11,6 +11,7 @@ ImageEditor::ImageEditor() :
     canvas(Canvas()),
     tools(Tools())
 {
+    setOnScroll([this](const Position &position, float x, float y) -> void { onScroll(position, x, y); });
 }
 
 void ImageEditor::draw(SDL_Renderer *renderer, const Position &offset, const Size &maxSize)
@@ -37,4 +38,11 @@ Views ImageEditor::getSubviews()
     views.push_back(canvas);
     views.push_back(tools);
     return views;
+}
+
+void ImageEditor::onScroll(const Position &position, float x, float y)
+{
+    const int MOUSE_SENSITIVITY = 5;
+    canvas.setPosition(canvas.getX().x - x * MOUSE_SENSITIVITY, canvas.getY().x + y * MOUSE_SENSITIVITY);
+    redraw();
 }
