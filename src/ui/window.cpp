@@ -40,6 +40,7 @@ void Window::run()
         {
             handleEvents(&event);
         }
+        if (mustRedraw) draw();
     }
 
     TTF_Quit();
@@ -91,3 +92,5 @@ Position Window::getMousePosition() const
     SDL_GetMouseState(&x, &y);
     return Position(x, y);
 }
+
+bool Window::mustRedraw = false;

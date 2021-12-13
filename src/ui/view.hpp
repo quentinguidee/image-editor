@@ -27,6 +27,8 @@ private:
     Position drawingPosition;
     Size drawingSize;
 
+    bool mustRedraw = true;
+
     std::function<void(const Position&)> onClick;
 
 public:
@@ -55,6 +57,7 @@ public:
     void setSize(const Size& size);
 
     // Drawing
+    void redraw();
     virtual void draw(SDL_Renderer* renderer, const Position& offset, const Size& maxSize) = 0;
 
     void setDrawingPosition(const Position& position);

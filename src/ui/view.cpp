@@ -5,6 +5,7 @@
 
 #include "area.hpp"
 #include "position.hpp"
+#include "window.hpp"
 
 View::View() :
     position(Position::ZERO),
@@ -85,6 +86,11 @@ void View::setSize(const Size& size)
 {
     setWidth(size.width);
     setHeight(size.height);
+}
+
+void View::redraw()
+{
+    Window::mustRedraw = true;
 }
 
 void View::setDrawingPosition(const Position& position)

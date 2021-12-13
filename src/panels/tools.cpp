@@ -42,6 +42,7 @@ void Tools::onPointerButtonClick(const Position& position)
     unselectAll();
     std::cout << "Pointer click event" << std::endl;
     pointerButton.select();
+    redraw();
 }
 
 void Tools::onShapeButtonClick(const Position& position)
@@ -49,6 +50,7 @@ void Tools::onShapeButtonClick(const Position& position)
     unselectAll();
     std::cout << "Shape click event" << std::endl;
     shapeButton.select();
+    redraw();
 }
 
 void Tools::unselectAll()
