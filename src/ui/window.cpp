@@ -4,6 +4,7 @@
 
 #include "SDL.h"
 #include "SDL_image.h"
+#include "SDL_mouse.h"
 #include "SDL_ttf.h"
 #include "color.hpp"
 #include "font.hpp"
@@ -58,7 +59,7 @@ void Window::handleEvents(SDL_Event* event)
             running = false;
             break;
         case SDL_MOUSEBUTTONDOWN:
-            root.processMouseEvent(event->button, 0, 0);
+            root.propagateMouseEvent(event->button, getMousePosition());
     }
 }
 
@@ -82,4 +83,11 @@ Size Window::getSize() const
     int width, height;
     SDL_GetWindowSize(window, &width, &height);
     return Size(width, height);
+}
+
+Position Window::getMousePosition() const
+{
+    int x, y;
+    SDL_GetMouseState(&x, &y);
+    return Position(x, y);
 }

@@ -8,11 +8,15 @@ class Tools : public VerticalLayout
 {
 private:
     ImageButton pointerButton;
-    ImageButton rectangleButton;
+    ImageButton shapeButton;
 
 public:
     Tools();
     ~Tools() {}
+
+    // Change tools
+    void onPointerButtonClick(const Position& position);
+    void onShapeButtonClick(const Position& position);
 };
 
 #endif /* TOOLS_HPP */

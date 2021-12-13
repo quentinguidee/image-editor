@@ -3,8 +3,8 @@
 #include <functional>
 #include <vector>
 
+#include "area.hpp"
 #include "position.hpp"
-#include "size.hpp"
 
 View::View() :
     position(Position::ZERO),
@@ -12,13 +12,6 @@ View::View() :
     drawingPosition(Position::ZERO),
     drawingSize(Size::ZERO)
 {
-}
-
-void View::processMouseEvent(SDL_MouseButtonEvent& event, int x, int y)
-{
-    Views views = getSubviews();
-    for (int i = 0; i < views.size(); i++)
-        views[i].get().processMouseEvent(event, x, y);
 }
 
 Views View::getSubviews()
@@ -112,4 +105,34 @@ const Position& View::getDrawingPosition() const
 const Size& View::getDrawingSize() const
 {
     return drawingSize;
+}
+
+const Area View::getDrawingArea() const
+{
+    return Area(getDrawingPosition(), getDrawingSize());
+}
+
+void View::propagateMouseEvent(SDL_MouseButtonEvent& event, const Position& position)
+{
+    if (getDrawingArea().contains(position))
+        onMouseEvent(event, position);
+
+    Views views = getSubviews();
+    for (int i = 0; i < views.size(); i++)
+        views[i].get().propagateMouseEvent(event, position);
+}
+
+void View::onMouseEvent(SDL_MouseButtonEvent& event, const Position& position)
+{
+    switch (event.button)
+    {
+        case SDL_BUTTON_LEFT:
+            if (onClick) onClick(position);
+            break;
+    }
+}
+
+void View::setOnClick(std::function<void(const Position&)> onClick)
+{
+    this->onClick = onClick;
 }

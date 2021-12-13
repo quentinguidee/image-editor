@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "SDL.h"
+#include "area.hpp"
 #include "position.hpp"
 #include "size.hpp"
 
@@ -26,14 +27,15 @@ private:
     Position drawingPosition;
     Size drawingSize;
 
+    std::function<void(const Position&)> onClick;
+
 public:
     View();
     ~View() {}
 
-    virtual void draw(SDL_Renderer* renderer, const Position& offset, const Size& maxSize) = 0;
-    virtual void processMouseEvent(SDL_MouseButtonEvent& event, int x, int y);
     virtual Views getSubviews();
 
+    // Position
     Position1D getX() const;
     Position1D getY() const;
     Position getPosition() const;
@@ -42,6 +44,7 @@ public:
     void setY(int16_t y);
     void setPosition(int16_t x, int16_t y);
 
+    // Size
     Size1D getWidth() const;
     Size1D getHeight() const;
     Size getSize() const;
@@ -51,11 +54,20 @@ public:
     void setSize(uint16_t width, uint16_t height);
     void setSize(const Size& size);
 
+    // Drawing
+    virtual void draw(SDL_Renderer* renderer, const Position& offset, const Size& maxSize) = 0;
+
     void setDrawingPosition(const Position& position);
     void setDrawingSize(const Size& size);
 
     const Position& getDrawingPosition() const;
     const Size& getDrawingSize() const;
+    const Area getDrawingArea() const;
+
+    // Events
+    void propagateMouseEvent(SDL_MouseButtonEvent& event, const Position& position);
+    void onMouseEvent(SDL_MouseButtonEvent& event, const Position& position);
+    void setOnClick(std::function<void(const Position&)> onClick);
 };
 
 #endif /* VIEW_HPP */
