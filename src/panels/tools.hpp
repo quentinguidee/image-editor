@@ -17,8 +17,8 @@ public:
     ~Tools() {}
 
     // Change tools
-    void onPointerButtonClick(const Position& position);
-    void onShapeButtonClick(const Position& position);
+    void pointerButtonEventHandler(const Event& event);
+    void shapeButtonEventHandler(const Event& event);
 
     void unselectAll();
 };

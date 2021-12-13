@@ -18,7 +18,7 @@ public:
     void draw(SDL_Renderer *renderer, const Position &offset, const Size &maxSize) override;
     Views getSubviews() override;
 
-    void onScroll(const Position &position, float x, float y);
+    void eventHandler(const Event &event);
 };
 
 #endif /* IMAGE_EDITOR_HPP */

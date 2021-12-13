@@ -6,6 +6,7 @@
 #include "SDL_image.h"
 #include "SDL_ttf.h"
 #include "color.hpp"
+#include "event.hpp"
 #include "font.hpp"
 #include "sdl_draw.hpp"
 
@@ -58,13 +59,10 @@ void Window::handleEvents(SDL_Event* event)
         case SDL_QUIT:
             running = false;
             break;
-        case SDL_MOUSEBUTTONDOWN:
-            root.propagateEvent(*event, getMousePosition());
-            break;
-        case SDL_MOUSEWHEEL:
-            root.propagateEvent(*event, getMousePosition());
-            break;
     }
+
+    if (event->type == SDL_MOUSEBUTTONDOWN || event->type == SDL_MOUSEWHEEL)
+        root.propagateEvent(Event(event));
 }
 
 void Window::draw()
@@ -89,13 +87,6 @@ Size Window::getSize() const
     int width, height;
     SDL_GetWindowSize(window, &width, &height);
     return Size(width, height);
-}
-
-Position Window::getMousePosition() const
-{
-    int x, y;
-    SDL_GetMouseState(&x, &y);
-    return Position(x, y);
 }
 
 bool Window::mustRedraw = false;

@@ -24,33 +24,39 @@ Tools::Tools() :
     pointerButton.setFillColorSelected(Color::BACKGROUND_LIGHT);
     pointerButton.setFillColorUnselected(Color::BACKGROUND_DARK);
     pointerButton.useToggleBehaviour();
-    pointerButton.setOnClick([this](const Position& position) -> void { onPointerButtonClick(position); });
+    pointerButton.setEventHandler([this](const Event& event) -> void { pointerButtonEventHandler(event); });
 
     shapeButton.setSize(36, 36);
     shapeButton.setPosition(6, 6);
     shapeButton.setFillColorSelected(Color::BACKGROUND_LIGHT);
     shapeButton.setFillColorUnselected(Color::BACKGROUND_DARK);
     shapeButton.useToggleBehaviour();
-    shapeButton.setOnClick([this](const Position& position) -> void { onShapeButtonClick(position); });
+    shapeButton.setEventHandler([this](const Event& event) -> void { shapeButtonEventHandler(event); });
 
     addView(pointerButton);
     addView(shapeButton);
 }
 
-void Tools::onPointerButtonClick(const Position& position)
+void Tools::pointerButtonEventHandler(const Event& event)
 {
-    unselectAll();
-    std::cout << "Pointer click event" << std::endl;
-    pointerButton.select();
-    redraw();
+    if (event.mouseClick())
+    {
+        unselectAll();
+        std::cout << "Pointer click event" << std::endl;
+        pointerButton.select();
+        redraw();
+    }
 }
 
-void Tools::onShapeButtonClick(const Position& position)
+void Tools::shapeButtonEventHandler(const Event& event)
 {
-    unselectAll();
-    std::cout << "Shape click event" << std::endl;
-    shapeButton.select();
-    redraw();
+    if (event.mouseClick())
+    {
+        unselectAll();
+        std::cout << "Shape click event" << std::endl;
+        shapeButton.select();
+        redraw();
+    }
 }
 
 void Tools::unselectAll()

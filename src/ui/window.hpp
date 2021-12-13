@@ -35,7 +35,6 @@ public:
     void handleEvents(SDL_Event* event);
 
     Size getSize() const;
-    Position getMousePosition() const;
 };
 
 #endif /* WINDOW_HPP */
