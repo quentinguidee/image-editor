@@ -1,4 +1,5 @@
 -std=c++14
+-I/usr/local/include/SDL2
 -I/usr/local/include
 -D_THREAD_SAFE
 -L/usr/local/lib
