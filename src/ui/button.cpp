@@ -2,7 +2,9 @@
 
 #include "rounded_rectangle.hpp"
 
-Button::Button()
+Button::Button() :
+    fillColorSelected(Color::BACKGROUND),
+    fillColorUnselected(Color::BACKGROUND)
 {
     setSize(36, 36);
 
@@ -24,5 +26,35 @@ bool Button::isPressed() const
 
 void Button::toggle()
 {
-    toggled = !toggled;
+    setToggle(!toggled);
+}
+
+void Button::setToggle(bool value)
+{
+    toggled = value;
+    toggled ? setFillColor(fillColorSelected) : setFillColor(fillColorUnselected);
+}
+
+void Button::unselect()
+{
+    setToggle(false);
+}
+
+void Button::select()
+{
+    setToggle(true);
+}
+
+void Button::setFillColorSelected(const Color& color)
+{
+    fillColorSelected = color;
+    if (toggled)
+        setFillColor(color);
+}
+
+void Button::setFillColorUnselected(const Color& color)
+{
+    fillColorUnselected = color;
+    if (!toggled)
+        setFillColor(color);
 }

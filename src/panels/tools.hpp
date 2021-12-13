@@ -10,6 +10,8 @@ private:
     ImageButton pointerButton;
     ImageButton shapeButton;
 
+    int selection;
+
 public:
     Tools();
     ~Tools() {}
@@ -17,6 +19,8 @@ public:
     // Change tools
     void onPointerButtonClick(const Position& position);
     void onShapeButtonClick(const Position& position);
+
+    void unselectAll();
 };
 
 #endif /* TOOLS_HPP */
