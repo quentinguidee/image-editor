@@ -3,8 +3,8 @@
 #include "rounded_rectangle.hpp"
 
 Button::Button() :
-    fillColorSelected(Color::BACKGROUND),
-    fillColorUnselected(Color::BACKGROUND)
+    fillColorUnselected(Color::BACKGROUND),
+    fillColorSelected(Color::BACKGROUND_LIGHT)
 {
     setSize(36, 36);
 

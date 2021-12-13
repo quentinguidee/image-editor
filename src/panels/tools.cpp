@@ -21,15 +21,15 @@ Tools::Tools() :
 
     pointerButton.setSize(36, 36);
     pointerButton.setPosition(6, 6);
-    pointerButton.setFillColorUnselected(Color::BACKGROUND_DARKER);
-    pointerButton.setFillColorSelected(Color::BACKGROUND);
+    pointerButton.setFillColorSelected(Color::BACKGROUND_LIGHT);
+    pointerButton.setFillColorUnselected(Color::BACKGROUND_DARK);
     pointerButton.useToggleBehaviour();
     pointerButton.setOnClick([this](const Position& position) -> void { onPointerButtonClick(position); });
 
     shapeButton.setSize(36, 36);
     shapeButton.setPosition(6, 6);
-    shapeButton.setFillColorUnselected(Color::BACKGROUND_DARKER);
-    shapeButton.setFillColorSelected(Color::BACKGROUND);
+    shapeButton.setFillColorSelected(Color::BACKGROUND_LIGHT);
+    shapeButton.setFillColorUnselected(Color::BACKGROUND_DARK);
     shapeButton.useToggleBehaviour();
     shapeButton.setOnClick([this](const Position& position) -> void { onShapeButtonClick(position); });
 

@@ -77,6 +77,8 @@ void Window::draw()
     root.draw(renderer, Position::ZERO, size);
 
     SDL_RenderPresent(renderer);
+
+    mustRedraw = false;
 }
 
 Size Window::getSize() const

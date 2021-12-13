@@ -34,6 +34,7 @@ public:
     static const Color GREEN;
     static const Color BLUE;
 
+    static const Color BACKGROUND_LIGHT;
     static const Color BACKGROUND;
     static const Color BACKGROUND_DARK;
     static const Color BACKGROUND_DARKER;
