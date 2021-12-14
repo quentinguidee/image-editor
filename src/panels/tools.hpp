@@ -9,6 +9,7 @@ class Tools : public VerticalLayout
 private:
     ImageButton pointerButton;
     ImageButton shapeButton;
+    ImageButton pencilButton;
 
     int selection;
 
@@ -19,6 +20,7 @@ public:
     // Change tools
     void pointerButtonEventHandler(const Event& event);
     void shapeButtonEventHandler(const Event& event);
+    void pencilButtonEventHandler(const Event& event);
 
     void unselectAll();
 };

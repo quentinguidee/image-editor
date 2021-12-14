@@ -9,7 +9,8 @@
 
 Tools::Tools() :
     pointerButton(ImageButton("src/assets/icons/ArrowIcon.png")),
-    shapeButton(ImageButton("src/assets/icons/RectangleIcon.png"))
+    shapeButton(ImageButton("src/assets/icons/RectangleIcon.png")),
+    pencilButton(ImageButton("src/assets/icons/PencilIcon.png"))
 {
     setSize(48, 300);
     setFillColor(Color::BACKGROUND_DARK);
@@ -33,8 +34,16 @@ Tools::Tools() :
     shapeButton.useToggleBehaviour();
     shapeButton.setEventHandler([this](const Event& event) -> void { shapeButtonEventHandler(event); });
 
+    pencilButton.setSize(36, 36);
+    pencilButton.setPosition(6, 6);
+    pencilButton.setFillColorSelected(Color::BACKGROUND_LIGHT);
+    pencilButton.setFillColorUnselected(Color::BACKGROUND_DARK);
+    pencilButton.useToggleBehaviour();
+    pencilButton.setEventHandler([this](const Event& event) -> void { pencilButtonEventHandler(event); });
+
     addView(pointerButton);
     addView(shapeButton);
+    addView(pencilButton);
 }
 
 void Tools::pointerButtonEventHandler(const Event& event)
@@ -55,6 +64,17 @@ void Tools::shapeButtonEventHandler(const Event& event)
         unselectAll();
         std::cout << "Shape click event" << std::endl;
         shapeButton.select();
+        redraw();
+    }
+}
+
+void Tools::pencilButtonEventHandler(const Event& event)
+{
+    if (event.mouseClick())
+    {
+        unselectAll();
+        std::cout << "Pencil click event" << std::endl;
+        pencilButton.select();
         redraw();
     }
 }
