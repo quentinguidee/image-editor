@@ -17,9 +17,14 @@ public:
 
     bool mouseClick() const;
     bool mouseScroll() const;
+    bool keyPressed() const;
 
     float getScrollX() const;
     float getScrollY() const;
+
+    bool getKeyState(SDL_Scancode scancode) const;
+
+    bool keyAlt() const;
 };
 
 #endif /* EVENT_HPP */

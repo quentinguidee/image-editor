@@ -44,12 +44,37 @@ void ImageEditor::eventHandler(const Event &event)
 {
     if (event.mouseScroll())
     {
-        const int MOUSE_SENSITIVITY = 5;
-
-        canvas.setPosition(
-            canvas.getX().x - event.getScrollX() * MOUSE_SENSITIVITY,
-            canvas.getY().x + event.getScrollY() * MOUSE_SENSITIVITY);
-
-        redraw();
+        if (event.keyAlt())
+        {
+            eventZoom(event.getMousePosition(), event.getScrollY());
+        }
+        else
+        {
+            eventMove(event.getScrollX(), event.getScrollY());
+        }
     }
+}
+
+void ImageEditor::eventZoom(const Position &position, float scrollY)
+{
+    const int MOUSE_SENSITIVITY = 5;
+
+    float zoom_multiplier = 1 + scrollY * 0.04;
+
+    canvas.setSize(
+        canvas.getSize().width * zoom_multiplier,
+        canvas.getSize().height * zoom_multiplier);
+
+    redraw();
+}
+
+void ImageEditor::eventMove(float scrollX, float scrollY)
+{
+    const int MOUSE_SENSITIVITY = 5;
+
+    canvas.setPosition(
+        canvas.getX().x - scrollX * MOUSE_SENSITIVITY,
+        canvas.getY().x + scrollY * MOUSE_SENSITIVITY);
+
+    redraw();
 }

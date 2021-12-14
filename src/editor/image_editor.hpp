@@ -19,6 +19,8 @@ public:
     Views getSubviews() override;
 
     void eventHandler(const Event &event);
+    void eventZoom(const Position &position, float scrollY);
+    void eventMove(float scrollX, float scrollY);
 };
 
 #endif /* IMAGE_EDITOR_HPP */

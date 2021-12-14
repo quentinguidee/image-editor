@@ -34,6 +34,9 @@ void Window::run()
     draw();
 
     SDL_Event event;
+    // TODO: Create Event() here only once, because the
+    // SDL_Event is also only create once. No need to recreate
+    // Event() for each loop.
     while (running)
     {
         while (SDL_PollEvent(&event))
@@ -61,7 +64,9 @@ void Window::handleEvents(SDL_Event* event)
             break;
     }
 
-    if (event->type == SDL_MOUSEBUTTONDOWN || event->type == SDL_MOUSEWHEEL)
+    if (event->type == SDL_MOUSEBUTTONDOWN ||
+        event->type == SDL_MOUSEWHEEL ||
+        event->type == SDL_KEYDOWN)
         root.propagateEvent(Event(event));
 }
 
