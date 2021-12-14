@@ -32,7 +32,7 @@ public:
 
     void run();
     void draw();
-    void handleEvents(SDL_Event* event);
+    void handleEvents(const Event& event);
 
     Size getSize() const;
 };

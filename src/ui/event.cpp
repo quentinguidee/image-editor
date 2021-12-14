@@ -20,8 +20,7 @@ Position Event::getMousePosition() const
 
 bool Event::mouseClick() const
 {
-    return event->type == SDL_MOUSEBUTTONDOWN &&
-           event->button.button == SDL_BUTTON_LEFT;
+    return event->type == SDL_MOUSEBUTTONDOWN;
 }
 
 bool Event::mouseScroll() const
@@ -32,6 +31,16 @@ bool Event::mouseScroll() const
 bool Event::keyPressed() const
 {
     return event->type == SDL_KEYDOWN;
+}
+
+bool Event::windowEvent() const
+{
+    return event->type == SDL_WINDOWEVENT;
+}
+
+bool Event::quitEvent() const
+{
+    return event->type == SDL_QUIT;
 }
 
 float Event::getScrollX() const
@@ -52,4 +61,9 @@ bool Event::getKeyState(SDL_Scancode scancode) const
 bool Event::keyAlt() const
 {
     return getKeyState(SDL_SCANCODE_LALT);
+}
+
+bool Event::windowSizeChanged() const
+{
+    return event->window.event == SDL_WINDOWEVENT_SIZE_CHANGED;
 }

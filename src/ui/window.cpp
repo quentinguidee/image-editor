@@ -33,16 +33,13 @@ void Window::run()
 
     draw();
 
-    SDL_Event event;
-    // TODO: Create Event() here only once, because the
-    // SDL_Event is also only create once. No need to recreate
-    // Event() for each loop.
+    SDL_Event sdl_event;
+    Event event = Event(&sdl_event);
     while (running)
     {
-        while (SDL_PollEvent(&event))
-        {
-            handleEvents(&event);
-        }
+        while (SDL_PollEvent(&sdl_event))
+            handleEvents(event);
+
         if (mustRedraw) draw();
     }
 
@@ -51,23 +48,25 @@ void Window::run()
     SDL_Quit();
 }
 
-void Window::handleEvents(SDL_Event* event)
+void Window::handleEvents(const Event& event)
 {
-    switch (event->type)
+    if (event.quitEvent())
     {
-        case SDL_WINDOWEVENT:
-            if (event->window.event == SDL_WINDOWEVENT_SIZE_CHANGED)
-                draw();
-            break;
-        case SDL_QUIT:
-            running = false;
-            break;
+        running = false;
+        return;
     }
 
-    if (event->type == SDL_MOUSEBUTTONDOWN ||
-        event->type == SDL_MOUSEWHEEL ||
-        event->type == SDL_KEYDOWN)
+    if (event.windowEvent() && event.windowSizeChanged())
+    {
+        draw();
+        return;
+    }
+
+    if (event.mouseClick() || event.mouseScroll() || event.keyPressed())
+    {
         root.propagateEvent(Event(event));
+        return;
+    }
 }
 
 void Window::draw()
