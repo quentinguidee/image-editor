@@ -12,7 +12,7 @@ Tools::Tools() :
     shapeButton(ImageButton("src/assets/icons/RectangleIcon.png")),
     pencilButton(ImageButton("src/assets/icons/PencilIcon.png"))
 {
-    setSize(48, 300);
+    setSize(48, 128);
     setFillColor(Color::BACKGROUND_DARK);
 
     RoundedRectangle* background = new RoundedRectangle();
@@ -28,14 +28,14 @@ Tools::Tools() :
     pointerButton.setEventHandler([this](const Event& event) -> void { pointerButtonEventHandler(event); });
 
     shapeButton.setSize(36, 36);
-    shapeButton.setPosition(6, 6);
+    shapeButton.setPosition(6, 4);
     shapeButton.setFillColorSelected(Color::BACKGROUND_LIGHT);
     shapeButton.setFillColorUnselected(Color::BACKGROUND_DARK);
     shapeButton.useToggleBehaviour();
     shapeButton.setEventHandler([this](const Event& event) -> void { shapeButtonEventHandler(event); });
 
     pencilButton.setSize(36, 36);
-    pencilButton.setPosition(6, 6);
+    pencilButton.setPosition(6, 4);
     pencilButton.setFillColorSelected(Color::BACKGROUND_LIGHT);
     pencilButton.setFillColorUnselected(Color::BACKGROUND_DARK);
     pencilButton.useToggleBehaviour();
