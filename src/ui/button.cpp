@@ -9,7 +9,7 @@ Button::Button() :
     setSize(36, 36);
 
     RoundedRectangle* background = new RoundedRectangle();
-    background->setRadius(6);
+    background->setRadius(4);
     background->setSize(getSize());
     setBackgroundShape(background);
 }
