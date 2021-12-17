@@ -1,9 +1,9 @@
 #ifndef IMAGE_EDITOR_HPP
 #define IMAGE_EDITOR_HPP
 
-#include "../panels/tools.hpp"
 #include "../ui/view.hpp"
 #include "canvas.hpp"
+#include "tools.hpp"
 
 class ImageEditor : public View
 {
