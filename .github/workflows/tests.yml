@@ -1,0 +1,14 @@
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Dependencies
+        run: scripts/dependencies_ubuntu.sh
+      - name: Compile
+        run: make
+      - name: Compile tests + run tests
+        run: make tests

@@ -1,6 +1,6 @@
 CXX := g++
-CXXFLAGS := -std=c++14 -I/usr/local/include/SDL2
-LDFLAGS := -L/usr/local/lib -lSDL2 -lSDL2_ttf -lSDL2_image
+CXXFLAGS := $(shell sdl2-config --cflags) -std=c++14 
+LDFLAGS := $(shell sdl2-config --libs) -lSDL2_ttf -lSDL2_image
 
 BUILD_DIRECTORY = build
 TESTS_DIRECTORY = tests
