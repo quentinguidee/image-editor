@@ -9,5 +9,5 @@ mkdir build
 cd build || exit
 cmake .. -DCMAKE_CXX_STANDARD=17
 make
-make install
+sudo make install
 rm -rf $TEMP_FOLDER

@@ -2,12 +2,15 @@ on: [push, pull_request]
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Dependencies
-        run: scripts/dependencies_ubuntu.sh
+        run: scripts/dependencies.sh
       - name: Compile
         run: make
       - name: Compile tests + run tests

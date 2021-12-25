@@ -1,11 +1,11 @@
 CXX := g++
-CXXFLAGS := $(shell sdl2-config --cflags) -std=c++14 
-LDFLAGS := $(shell sdl2-config --libs) -lSDL2_ttf -lSDL2_image
+CXXFLAGS := $(shell pkg-config --cflags sdl2) -std=c++14 
+LDFLAGS := $(shell pkg-config --libs sdl2) -lSDL2_ttf -lSDL2_image
 
 BUILD_DIRECTORY = build
 TESTS_DIRECTORY = tests
 
-SOURCES := $(shell find src/* -name *.cpp)
+SOURCES := $(shell find src/* -mindepth 1 -name *.cpp)
 OBJECTS := $(SOURCES:%.cpp=$(BUILD_DIRECTORY)/%.o)
 TESTS_SOURCES := $(shell find $(TESTS_DIRECTORY)/* -name *.cpp)
 TESTS_OBJECTS := $(TESTS_SOURCES:%.cpp=$(BUILD_DIRECTORY)/%.o)
@@ -17,10 +17,10 @@ $(BUILD_DIRECTORY)/%.o: %.cpp
 	@echo ┆ CXX ┆ $@
 	@$(CXX) -c $(CXXFLAGS) $< -o $@
 
-build: $(OBJECTS)
+build: $(OBJECTS) $(BUILD_DIRECTORY)/src/main.o
 	@mkdir -p $(dir $@)
 	@echo "┆ LD  ┆ Linking..."
-	@$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJECTS) -o main
+	@$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJECTS) $(BUILD_DIRECTORY)/src/main.o -o main
 
 tests: $(OBJECTS) $(TESTS_OBJECTS)
 	@mkdir -p $(dir $@)
