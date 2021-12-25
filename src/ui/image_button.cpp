@@ -11,13 +11,13 @@ ImageButton::ImageButton(const string &imagePath) :
     image.setPosition(2, 2);
 }
 
-void ImageButton::setWidth(uint16_t value)
+void ImageButton::setWidth(float value)
 {
     View::setWidth(value);
     image.setWidth(value - 4);
 }
 
-void ImageButton::setHeight(uint16_t value)
+void ImageButton::setHeight(float value)
 {
     View::setHeight(value);
     image.setHeight(value - 4);

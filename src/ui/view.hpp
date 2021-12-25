@@ -3,8 +3,8 @@
 
 #include <stdint.h>
 
-#include <vector>
 #include <memory>
+#include <vector>
 
 #include "SDL.h"
 #include "SDL_events.h"
@@ -50,9 +50,9 @@ public:
     Size1D getHeight() const;
     Size getSize() const;
 
-    virtual void setWidth(uint16_t value);
-    virtual void setHeight(uint16_t value);
-    void setSize(uint16_t width, uint16_t height);
+    virtual void setWidth(float value);
+    virtual void setHeight(float value);
+    void setSize(float width, float height);
     void setSize(const Size& size);
 
     // Drawing

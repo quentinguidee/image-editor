@@ -15,8 +15,8 @@ public:
 
     void draw(SDL_Renderer *renderer, const Position &offset, const Size &maxSize) override;
 
-    void setWidth(uint16_t value) override;
-    void setHeight(uint16_t value) override;
+    void setWidth(float value) override;
+    void setHeight(float value) override;
 
     Img &getImage();
 };

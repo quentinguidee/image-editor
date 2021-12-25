@@ -66,17 +66,17 @@ Size View::getSize() const
     return size;
 }
 
-void View::setWidth(uint16_t value)
+void View::setWidth(float value)
 {
     size.width = value;
 }
 
-void View::setHeight(uint16_t value)
+void View::setHeight(float value)
 {
     size.height = value;
 }
 
-void View::setSize(uint16_t width, uint16_t height)
+void View::setSize(float width, float height)
 {
     setWidth(width);
     setHeight(height);

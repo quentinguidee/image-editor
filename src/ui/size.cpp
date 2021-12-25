@@ -1,8 +1,9 @@
 #include "size.hpp"
 
 #include <cstdint>
+#include <limits>
 
-Size1D::Size1D(uint16_t width) :
+Size1D::Size1D(float width) :
     width(width)
 {
 }
@@ -14,12 +15,12 @@ bool Size1D::isZero() const
 
 bool Size1D::isInfinite() const
 {
-    return width == UINT16_MAX;
+    return width == std::numeric_limits<float>::max();
 }
 
 bool Size1D::isUndefined() const
 {
-    return width == UINT16_MAX - 1;
+    return width == std::numeric_limits<float>::max() - 1;
 }
 
 void Size1D::ensureIsSmallerThan(const Size1D& maxWidth)
@@ -40,10 +41,10 @@ Size1D operator+(Size1D lhs, const Size1D& rhs)
 }
 
 const Size1D Size1D::ZERO = Size1D(0);
-const Size1D Size1D::INFINITE = Size1D(UINT16_MAX);
-const Size1D Size1D::UNDEFINED = Size1D(UINT16_MAX - 1);
+const Size1D Size1D::INFINITE = Size1D(std::numeric_limits<float>::max());
+const Size1D Size1D::UNDEFINED = Size1D(std::numeric_limits<float>::max() - 1);
 
-Size::Size(uint16_t width, uint16_t height) :
+Size::Size(float width, float height) :
     width(Size1D(width)),
     height(Size1D(height))
 {
@@ -90,5 +91,5 @@ Size operator+(Size lhs, const Size& rhs)
 }
 
 const Size Size::ZERO = Size(0, 0);
-const Size Size::INFINITE = Size(UINT16_MAX, UINT16_MAX);
-const Size Size::UNDEFINED = Size(UINT16_MAX - 1, UINT16_MAX - 1);
+const Size Size::INFINITE = Size(std::numeric_limits<float>::max(), std::numeric_limits<float>::max());
+const Size Size::UNDEFINED = Size(std::numeric_limits<float>::max() - 1, std::numeric_limits<float>::max() - 1);
