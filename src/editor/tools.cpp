@@ -14,7 +14,7 @@ Tools::Tools() :
     setSize(48, 132);
     setFillColor(Color::BACKGROUND_DARK);
 
-    RoundedRectangle* background = new RoundedRectangle();
+    std::shared_ptr<RoundedRectangle> background = std::make_shared<RoundedRectangle>();
     background->setRadius(8);
     background->setSize(getSize());
     setBackgroundShape(background);

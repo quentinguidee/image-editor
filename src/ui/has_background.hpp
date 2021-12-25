@@ -7,14 +7,14 @@
 class HasBackground : public Fillable
 {
 private:
-    Shape* shape;
+    std::shared_ptr<Shape> shape;
 
 public:
     HasBackground();
-    ~HasBackground();
+    ~HasBackground() {}
 
-    void setBackgroundShape(Shape* shape);
-    const Shape* getBackgroundShape() const;
+    void setBackgroundShape(std::shared_ptr<Shape> shape);
+    const std::shared_ptr<Shape> getBackgroundShape() const;
 
     void drawFill(SDL_Renderer* renderer, const Position& offset, const Size& maxSize) override;
 };

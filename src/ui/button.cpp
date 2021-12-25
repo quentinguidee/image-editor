@@ -1,4 +1,5 @@
 #include "button.hpp"
+#include <memory>
 
 #include "rounded_rectangle.hpp"
 
@@ -8,7 +9,7 @@ Button::Button() :
 {
     setSize(36, 36);
 
-    RoundedRectangle* background = new RoundedRectangle();
+    std::shared_ptr<RoundedRectangle> background = std::make_shared<RoundedRectangle>();
     background->setRadius(4);
     background->setSize(getSize());
     setBackgroundShape(background);

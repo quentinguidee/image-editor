@@ -1,11 +1,12 @@
 #include "layout.hpp"
+#include <memory>
 
 #include "rectangle.hpp"
 
 Layout::Layout() :
     views(Views())
 {
-    setBackgroundShape(new Rectangle());
+    setBackgroundShape(std::make_shared<Rectangle>());
 }
 
 void Layout::addView(std::shared_ptr<View> view)

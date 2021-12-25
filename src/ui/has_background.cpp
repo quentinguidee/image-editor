@@ -10,18 +10,12 @@ HasBackground::HasBackground() :
     setFillColor(Color::TRANSPARENT);
 }
 
-HasBackground::~HasBackground()
-{
-    if (shape != nullptr)
-        delete shape;
-}
-
-void HasBackground::setBackgroundShape(Shape* shape)
+void HasBackground::setBackgroundShape(std::shared_ptr<Shape> shape)
 {
     this->shape = shape;
 }
 
-const Shape* HasBackground::getBackgroundShape() const
+const std::shared_ptr<Shape> HasBackground::getBackgroundShape() const
 {
     return shape;
 }
