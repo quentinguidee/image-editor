@@ -45,12 +45,14 @@ bool Event::quitEvent() const
 
 float Event::getScrollX() const
 {
-    return event->wheel.preciseX;
+    // TODO: use wheel.preciseX (new in SDL2.0.18)
+    return event->wheel.x;
 }
 
 float Event::getScrollY() const
 {
-    return event->wheel.preciseY;
+    // TODO: use wheel.preciseY (new in SDL2.0.18)
+    return event->wheel.y;
 }
 
 bool Event::getKeyState(SDL_Scancode scancode) const
