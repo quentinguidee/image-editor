@@ -20,7 +20,7 @@ public:
 
     Views getSubviews() override;
 
-    void addView(View &view);
+    void addView(std::shared_ptr<View> view);
 };
 
 #endif /* LAYOUT_HPP */

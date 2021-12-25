@@ -8,7 +8,7 @@ Layout::Layout() :
     setBackgroundShape(new Rectangle());
 }
 
-void Layout::addView(View& view)
+void Layout::addView(std::shared_ptr<View> view)
 {
     views.push_back(view);
 }

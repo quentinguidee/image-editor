@@ -1,26 +1,21 @@
 #ifndef TOOLS_HPP
 #define TOOLS_HPP
 
-#include "../ui/image_button.hpp"
+#include <vector>
+
 #include "../ui/vertical_layout.hpp"
+#include "tool.hpp"
 
 class Tools : public VerticalLayout
 {
 private:
-    ImageButton pointerButton;
-    ImageButton shapeButton;
-    ImageButton pencilButton;
+    std::vector<std::shared_ptr<Tool>> tools;
 
-    int selection;
+    uint8_t activeToolID = 0;
 
 public:
     Tools();
     ~Tools() {}
-
-    // Change tools
-    void pointerButtonEventHandler(const Event& event);
-    void shapeButtonEventHandler(const Event& event);
-    void pencilButtonEventHandler(const Event& event);
 
     void unselectAll();
 };

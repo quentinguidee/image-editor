@@ -13,7 +13,7 @@ class Widget : public VerticalLayout
 private:
     string title;
 
-    Text titleText;
+    std::shared_ptr<Text> titleText;
 
 public:
     Widget(const string& title);

@@ -32,9 +32,9 @@ void LinearLayout::drawStack(SDL_Renderer* renderer, const Position& offset, con
     uint8_t fullSizeCount = 0;
     for (int i = 0; i < views.size(); i++)
     {
-        const View& view = views[i].get();
+        std::shared_ptr<View> view = views[i];
 
-        Size1D viewSize = view.getSize()[dimension];
+        Size1D viewSize = view->getSize()[dimension];
 
         if (viewSize.isInfinite())
             fullSizeCount++;
@@ -50,9 +50,9 @@ void LinearLayout::drawStack(SDL_Renderer* renderer, const Position& offset, con
 
     for (int i = 0; i < views.size(); i++)
     {
-        View& view = views[i].get();
+        std::shared_ptr<View> view = views[i];
 
-        Size childMaxSize = view.getSize();
+        Size childMaxSize = view->getSize();
 
         if (dimension == 0)
         {
@@ -75,11 +75,11 @@ void LinearLayout::drawStack(SDL_Renderer* renderer, const Position& offset, con
                 childMaxSize.width = maxSize.width;
         }
 
-        view.draw(renderer, currentOffset, childMaxSize);
+        view->draw(renderer, currentOffset, childMaxSize);
 
         if (dimension == 0)
-            currentOffset.x += Position1D(childMaxSize.width + view.getX());
+            currentOffset.x += Position1D(childMaxSize.width + view->getX());
         else
-            currentOffset.y += Position1D(childMaxSize.height + view.getY());
+            currentOffset.y += Position1D(childMaxSize.height + view->getY());
     }
 }

@@ -7,7 +7,7 @@
 class Toolbar : public HorizontalLayout
 {
 private:
-    Text logo;
+    std::shared_ptr<Text> logo;
 
 public:
     Toolbar();

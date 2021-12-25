@@ -125,7 +125,7 @@ void View::propagateEvent(const Event& event)
 
     Views views = getSubviews();
     for (int i = 0; i < views.size(); i++)
-        views[i].get().propagateEvent(event);
+        views[i]->propagateEvent(event);
 }
 
 void View::setEventHandler(std::function<void(const Event&)> handler)

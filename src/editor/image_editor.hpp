@@ -8,8 +8,8 @@
 class ImageEditor : public View
 {
 private:
-    Canvas canvas;
-    Tools tools;
+    std::shared_ptr<Canvas> canvas;
+    std::shared_ptr<Tools> tools;
 
 public:
     ImageEditor();

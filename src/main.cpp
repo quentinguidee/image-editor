@@ -10,15 +10,15 @@
 
 int main()
 {
-    Toolbar toolbar = Toolbar();
+    std::shared_ptr<Toolbar> toolbar = std::make_shared<Toolbar>();
 
-    ImageEditor editor = ImageEditor();
-    editor.setSize(Size::INFINITE);
+    std::shared_ptr<ImageEditor> editor = std::make_shared<ImageEditor>();
+    editor->setSize(Size::INFINITE);
 
-    VerticalLayout root = VerticalLayout();
-    root.addView(toolbar);
-    root.addView(editor);
-    root.setSize(Size::INFINITE);
+    std::shared_ptr<VerticalLayout> root = std::make_shared<VerticalLayout>();
+    root->addView(toolbar);
+    root->addView(editor);
+    root->setSize(Size::INFINITE);
 
     string title = "Image Editor";
     Window window = Window(title, root);

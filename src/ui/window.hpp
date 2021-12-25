@@ -13,7 +13,7 @@ class Window
 private:
     string title;
 
-    View& root;
+    std::shared_ptr<View> root;
 
     bool running = false;
 
@@ -27,7 +27,7 @@ public:
     // for the moment, but it will not always be the case.
     static bool mustRedraw;
 
-    Window(const string& title, View& root);
+    Window(const string& title, std::shared_ptr<View> root);
     ~Window() {}
 
     void run();

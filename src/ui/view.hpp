@@ -3,8 +3,8 @@
 
 #include <stdint.h>
 
-#include <functional>
 #include <vector>
+#include <memory>
 
 #include "SDL.h"
 #include "SDL_events.h"
@@ -13,12 +13,9 @@
 #include "position.hpp"
 #include "size.hpp"
 
-using std::reference_wrapper;
-using std::vector;
-
 class View;
 
-typedef vector<reference_wrapper<View>> Views;
+typedef std::vector<std::shared_ptr<View>> Views;
 
 class View
 {

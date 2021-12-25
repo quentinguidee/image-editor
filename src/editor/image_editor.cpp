@@ -8,8 +8,8 @@
 #include "canvas.hpp"
 
 ImageEditor::ImageEditor() :
-    canvas(Canvas()),
-    tools(Tools())
+    canvas(new Canvas()),
+    tools(new Tools())
 {
     setEventHandler([this](const Event &event) -> void { eventHandler(event); });
 }
@@ -27,9 +27,8 @@ void ImageEditor::draw(SDL_Renderer *renderer, const Position &offset, const Siz
 
     SDL::drawRectangle(renderer, position, size);
 
-    canvas.draw(renderer, offset, size);
-
-    tools.draw(renderer, offset + Position(16, 16), maxSize);
+    canvas->draw(renderer, offset, size);
+    tools->draw(renderer, offset + Position(16, 16), maxSize);
 }
 
 Views ImageEditor::getSubviews()
@@ -61,9 +60,9 @@ void ImageEditor::eventZoom(const Position &position, float scrollY)
 
     float zoom_multiplier = 1 + scrollY * 0.04;
 
-    canvas.setSize(
-        canvas.getSize().width * zoom_multiplier,
-        canvas.getSize().height * zoom_multiplier);
+    canvas->setSize(
+        canvas->getSize().width * zoom_multiplier,
+        canvas->getSize().height * zoom_multiplier);
 
     redraw();
 }
@@ -72,9 +71,9 @@ void ImageEditor::eventMove(float scrollX, float scrollY)
 {
     const int MOUSE_SENSITIVITY = 5;
 
-    canvas.setPosition(
-        canvas.getX().x - scrollX * MOUSE_SENSITIVITY,
-        canvas.getY().x + scrollY * MOUSE_SENSITIVITY);
+    canvas->setPosition(
+        canvas->getX().x - scrollX * MOUSE_SENSITIVITY,
+        canvas->getY().x + scrollY * MOUSE_SENSITIVITY);
 
     redraw();
 }

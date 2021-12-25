@@ -10,7 +10,7 @@
 #include "font.hpp"
 #include "sdl_draw.hpp"
 
-Window::Window(const string& title, View& root) :
+Window::Window(const string& title, std::shared_ptr<View> root) :
     title(title), root(root) {}
 
 void Window::run()
@@ -64,7 +64,7 @@ void Window::handleEvents(const Event& event)
 
     if (event.mouseClick() || event.mouseScroll() || event.keyPressed())
     {
-        root.propagateEvent(Event(event));
+        root->propagateEvent(Event(event));
         return;
     }
 }
@@ -79,7 +79,7 @@ void Window::draw()
 
     Size size = getSize();
 
-    root.draw(renderer, Position::ZERO, size);
+    root->draw(renderer, Position::ZERO, size);
 
     SDL_RenderPresent(renderer);
 
