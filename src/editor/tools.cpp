@@ -2,15 +2,16 @@
 
 #include <memory>
 
+#include "../resources/resources.hpp"
 #include "../ui/img.hpp"
 #include "../ui/rounded_rectangle.hpp"
 
 Tools::Tools() :
     tools(std::vector<std::shared_ptr<Tool>>())
 {
-    tools.push_back(std::make_shared<Tool>("src/assets/icons/ArrowIcon.png"));
-    tools.push_back(std::make_shared<Tool>("src/assets/icons/RectangleIcon.png"));
-    tools.push_back(std::make_shared<Tool>("src/assets/icons/PencilIcon.png"));
+    tools.push_back(std::make_shared<Tool>(Resources::getIcon("ArrowIcon")));
+    tools.push_back(std::make_shared<Tool>(Resources::getIcon("RectangleIcon")));
+    tools.push_back(std::make_shared<Tool>(Resources::getIcon("PencilIcon")));
 
     setSize(48, 132);
     setFillColor(Color::BACKGROUND_DARK);
