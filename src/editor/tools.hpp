@@ -10,8 +10,7 @@ class Tools : public VerticalLayout
 {
 private:
     std::vector<std::shared_ptr<Tool>> tools;
-
-    uint8_t activeToolID = 0;
+    std::shared_ptr<Tool> activeTool;
 
 public:
     Tools();

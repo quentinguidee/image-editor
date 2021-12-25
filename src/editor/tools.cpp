@@ -1,4 +1,5 @@
 #include "tools.hpp"
+
 #include <memory>
 
 #include "../ui/img.hpp"
@@ -26,7 +27,8 @@ Tools::Tools() :
             if (event.mouseClick())
             {
                 unselectAll();
-                tools[i]->select();
+                activeTool = tools[i];
+                activeTool->select();
                 redraw();
             }
         });
@@ -37,4 +39,6 @@ void Tools::unselectAll()
 {
     for (size_t i = 0; i < tools.size(); i++)
         tools[i]->unselect();
+
+    activeTool = nullptr;
 }
