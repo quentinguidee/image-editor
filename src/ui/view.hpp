@@ -41,9 +41,9 @@ public:
     Position1D getY() const;
     Position getPosition() const;
 
-    void setX(int16_t x);
-    void setY(int16_t y);
-    void setPosition(int16_t x, int16_t y);
+    void setX(float x);
+    void setY(float y);
+    void setPosition(float x, float y);
 
     // Size
     Size1D getWidth() const;

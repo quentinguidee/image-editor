@@ -16,7 +16,7 @@ void Canvas::draw(SDL_Renderer *renderer, const Position &offset, const Size &ma
     size.ensureIsSmallerThan(maxSize);
     setDrawingSize(size);
 
-    int pixelSize = size.width / (float)image.getWidth();
+    float pixelSize = size.width / (float)image.getWidth();
 
     Position position = Position(
         maxSize.width / 2 - size.width / 2 + getPosition().x.x,

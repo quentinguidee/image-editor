@@ -1,6 +1,8 @@
 #include "position.hpp"
 
-Position1D::Position1D(int16_t x) :
+#include <limits>
+
+Position1D::Position1D(float x) :
     x(x)
 {
 }
@@ -12,12 +14,12 @@ bool Position1D::isZero() const
 
 bool Position1D::isInfinite() const
 {
-    return x == INT16_MAX;
+    return x == std::numeric_limits<float>::max();
 }
 
 bool Position1D::isUndefined() const
 {
-    return x == INT16_MAX - 1;
+    return x == std::numeric_limits<float>::max() - 1;
 }
 
 Position1D& Position1D::operator+=(const Position1D& rhs)
@@ -53,10 +55,10 @@ Position1D operator+(Position1D lhs, const Position1D& rhs)
 }
 
 const Position1D Position1D::ZERO = Position1D(0);
-const Position1D Position1D::INFINITE = Position1D(INT16_MAX);
-const Position1D Position1D::UNDEFINED = Position1D(INT16_MAX - 1);
+const Position1D Position1D::INFINITE = Position1D(std::numeric_limits<float>::max());
+const Position1D Position1D::UNDEFINED = Position1D(std::numeric_limits<float>::max() - 1);
 
-Position::Position(int16_t x, int16_t y) :
+Position::Position(float x, float y) :
     x(Position1D(x)), y(Position1D(y))
 {
 }
@@ -96,5 +98,5 @@ Position operator+(Position lhs, const Position& rhs)
 }
 
 const Position Position::ZERO = Position(0, 0);
-const Position Position::INFINITE = Position(INT16_MAX, INT16_MAX);
-const Position Position::UNDEFINED = Position(INT16_MAX - 1, INT16_MAX - 1);
+const Position Position::INFINITE = Position(std::numeric_limits<float>::max(), std::numeric_limits<float>::max());
+const Position Position::UNDEFINED = Position(std::numeric_limits<float>::max() - 1, std::numeric_limits<float>::max() - 1);

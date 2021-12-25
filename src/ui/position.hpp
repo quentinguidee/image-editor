@@ -6,13 +6,13 @@
 class Position1D
 {
 public:
-    int16_t x;
+    float x;
 
     static const Position1D ZERO;
     static const Position1D INFINITE;
     static const Position1D UNDEFINED;
 
-    Position1D(int16_t x);
+    Position1D(float x);
     ~Position1D() {}
 
     bool isZero() const;
@@ -26,7 +26,7 @@ public:
     bool operator<=(const Position1D& rhs) const;
     friend Position1D operator+(Position1D lhs, const Position1D& rhs);
 
-    operator int16_t() const { return x; }
+    operator float() const { return x; }
 };
 
 class Position
@@ -39,7 +39,7 @@ public:
     static const Position INFINITE;
     static const Position UNDEFINED;
 
-    Position(int16_t x, int16_t y);
+    Position(float x, float y);
     ~Position() {}
 
     bool isZero() const;

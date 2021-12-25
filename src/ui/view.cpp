@@ -35,17 +35,17 @@ Position View::getPosition() const
     return position;
 }
 
-void View::setX(int16_t x)
+void View::setX(float x)
 {
     position.x = x;
 }
 
-void View::setY(int16_t y)
+void View::setY(float y)
 {
     position.y = y;
 }
 
-void View::setPosition(int16_t x, int16_t y)
+void View::setPosition(float x, float y)
 {
     setX(x);
     setY(y);
