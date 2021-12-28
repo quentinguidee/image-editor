@@ -14,10 +14,6 @@
 #include "position.hpp"
 #include "size.hpp"
 
-class View;
-
-typedef std::vector<std::shared_ptr<View>> Views;
-
 class View
 {
 private:
@@ -35,7 +31,7 @@ public:
     View();
     ~View() {}
 
-    virtual Views getSubviews();
+    virtual std::vector<std::shared_ptr<View>> getViews();
 
     // Position
     Position1D getX() const;

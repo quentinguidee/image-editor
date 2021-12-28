@@ -15,9 +15,9 @@ View::View() :
 {
 }
 
-Views View::getSubviews()
+std::vector<std::shared_ptr<View>> View::getViews()
 {
-    return Views();
+    return std::vector<std::shared_ptr<View>>();
 }
 
 Position1D View::getX() const
@@ -123,7 +123,7 @@ void View::propagateEvent(const Event& event)
     if (eventHandler && getDrawingArea().contains(event.getMousePosition()))
         eventHandler(event);
 
-    Views views = getSubviews();
+    std::vector<std::shared_ptr<View>> views = getViews();
     for (int i = 0; i < views.size(); i++)
         views[i]->propagateEvent(event);
 }

@@ -1,17 +1,17 @@
 #include "tools.hpp"
 
+#include <iostream>
 #include <memory>
 
 #include "../resources/resources.hpp"
 #include "../ui/img.hpp"
 #include "../ui/rounded_rectangle.hpp"
 
-Tools::Tools() :
-    tools(std::vector<std::shared_ptr<Tool>>())
+Tools::Tools()
 {
-    tools.push_back(std::make_shared<Tool>(Resources::getIcon("ArrowIcon")));
-    tools.push_back(std::make_shared<Tool>(Resources::getIcon("RectangleIcon")));
-    tools.push_back(std::make_shared<Tool>(Resources::getIcon("PencilIcon")));
+    addView(std::make_shared<Tool>(Resources::getIcon("ArrowIcon")));
+    addView(std::make_shared<Tool>(Resources::getIcon("RectangleIcon")));
+    addView(std::make_shared<Tool>(Resources::getIcon("PencilIcon")));
 
     setSize(48, 132);
     setFillColor(Color::BACKGROUND_DARK);
@@ -21,25 +21,18 @@ Tools::Tools() :
     background->setSize(getSize());
     setBackgroundShape(background);
 
-    for (size_t i = 0; i < tools.size(); i++)
+    for (size_t i = 0; i < getViews().size(); i++)
     {
-        addView(tools[i]);
-        tools[i]->setEventHandler([this, i](const Event& event) -> void {
+        getView(i)->setEventHandler([this, i](const Event& event) -> void {
             if (event.mouseClick())
             {
-                unselectAll();
-                activeTool = tools[i];
+                if (activeTool != nullptr) activeTool->unselect();
+                activeTool = getView<Tool>(i);
+                if (activeTool == nullptr)
+                    std::cerr << "Couldn't cast View to Tool" << std::endl;
                 activeTool->select();
                 redraw();
             }
         });
     }
-}
-
-void Tools::unselectAll()
-{
-    for (size_t i = 0; i < tools.size(); i++)
-        tools[i]->unselect();
-
-    activeTool = nullptr;
 }

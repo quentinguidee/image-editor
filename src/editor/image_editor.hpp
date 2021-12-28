@@ -5,7 +5,7 @@
 #include "canvas.hpp"
 #include "tools.hpp"
 
-class ImageEditor : public View
+class ImageEditor : public Layout
 {
 private:
     std::shared_ptr<Canvas> canvas;
@@ -16,7 +16,6 @@ public:
     ~ImageEditor() {}
 
     void draw(SDL_Renderer *renderer, const Position &offset, const Size &maxSize) override;
-    Views getSubviews() override;
 
     void eventHandler(const Event &event);
     void eventZoom(const Position &position, float scrollY);

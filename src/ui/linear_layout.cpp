@@ -1,6 +1,7 @@
 #include "linear_layout.hpp"
 
 #include <functional>
+#include <memory>
 
 #include "color.hpp"
 #include "layout.hpp"
@@ -23,7 +24,7 @@ void LinearLayout::drawStack(SDL_Renderer* renderer, const Position& offset, con
     size.ensureIsSmallerThan(maxSize);
     setDrawingSize(size);
 
-    Views views = getSubviews();
+    std::vector<std::shared_ptr<View>> views = getViews();
 
     Size1D realMaxSize = size[dimension];
     Size1D usedSize = Size1D(0);
