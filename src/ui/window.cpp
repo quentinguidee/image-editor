@@ -62,7 +62,7 @@ void Window::handleEvents(const Event& event)
         return;
     }
 
-    if (event.mouseClick() || event.mouseScroll() || event.keyPressed())
+    if (event.mouseLeftClick() || event.mouseLeftReleased() || event.mouseScroll() || event.keyPressed())
     {
         root->propagateEvent(Event(event));
         return;

@@ -18,9 +18,14 @@ Position Event::getMousePosition() const
     return Position(x, y);
 }
 
-bool Event::mouseClick() const
+bool Event::mouseLeftClick() const
 {
     return event->type == SDL_MOUSEBUTTONDOWN;
+}
+
+bool Event::mouseLeftReleased() const
+{
+    return event->type == SDL_MOUSEBUTTONUP;
 }
 
 bool Event::mouseScroll() const

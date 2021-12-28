@@ -15,7 +15,8 @@ public:
 
     Position getMousePosition() const;
 
-    bool mouseClick() const;
+    bool mouseLeftClick() const;
+    bool mouseLeftReleased() const;
     bool mouseScroll() const;
     bool keyPressed() const;
     bool windowEvent() const;

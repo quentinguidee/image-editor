@@ -1,5 +1,7 @@
 #include "menu_bar_item.hpp"
 
+#include <iostream>
+
 #include "position.hpp"
 #include "rounded_rectangle.hpp"
 #include "size.hpp"
@@ -8,11 +10,16 @@ MenuBarItem::MenuBarItem(const std::string &text) :
     text(std::make_shared<Text>(text))
 {
     setHeight(30);
-    setPosition(3, 6);
+    setPosition(12, 6);
     setBackgroundShape(std::make_shared<RoundedRectangle>(5));
-    setFillColor(Color::BACKGROUND_LIGHT);
-    addEventHandler([this](const Event &event) -> void {
 
+    setFillColorSelected(Color::BACKGROUND_LIGHT);
+    setFillColorUnselected(Color::BACKGROUND_DARK);
+
+    addEventHandler([this](const Event &event) -> void {
+        if (event.mouseLeftClick()) select();
+        if (event.mouseLeftReleased()) unselect();
+        redraw();
     });
 }
 
@@ -23,11 +30,14 @@ void MenuBarItem::draw(SDL_Renderer *renderer, const Position &offset, const Siz
 
     if (isPressed())
     {
-        getBackgroundShape()->setSize(text->getDrawingSize() + Size(8, 16));
         drawFill(renderer, position, maxSize);
     }
 
-    text->draw(renderer, offset + Position(18, 12), maxSize);
+    text->draw(renderer, position + Position(12, 6), maxSize);
 
-    setDrawingSize(getBackgroundShape()->getDrawingSize());
+    Size size = text->getDrawingSize() + Size(24, 14);
+
+    getBackgroundShape()->setSize(size);
+    setSize(size);
+    setDrawingSize(size);
 }
