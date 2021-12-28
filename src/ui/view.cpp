@@ -120,15 +120,15 @@ const Area View::getDrawingArea() const
 
 void View::propagateEvent(const Event& event)
 {
-    if (eventHandler && getDrawingArea().contains(event.getMousePosition()))
-        eventHandler(event);
+    if (eventHandlers.size() != 0 && getDrawingArea().contains(event.getMousePosition()))
+        for (size_t i = 0; i < eventHandlers.size(); i++) eventHandlers[i](event);
 
     std::vector<std::shared_ptr<View>> views = getViews();
     for (int i = 0; i < views.size(); i++)
         views[i]->propagateEvent(event);
 }
 
-void View::setEventHandler(std::function<void(const Event&)> handler)
+void View::addEventHandler(std::function<void(const Event&)> eventHandler)
 {
-    eventHandler = handler;
+    eventHandlers.push_back(eventHandler);
 }

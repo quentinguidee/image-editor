@@ -25,7 +25,7 @@ private:
 
     bool mustRedraw = true;
 
-    std::function<void(const Event&)> eventHandler;
+    std::vector<std::function<void(const Event&)>> eventHandlers;
 
 public:
     View();
@@ -65,7 +65,7 @@ public:
 
     // Events
     void propagateEvent(const Event& event);
-    void setEventHandler(std::function<void(const Event&)> handler);
+    void addEventHandler(std::function<void(const Event&)> handler);
 };
 
 #endif /* VIEW_HPP */

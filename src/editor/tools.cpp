@@ -23,7 +23,7 @@ Tools::Tools()
 
     for (size_t i = 0; i < getViews().size(); i++)
     {
-        getView(i)->setEventHandler([this, i](const Event& event) -> void {
+        getView(i)->addEventHandler([this, i](const Event& event) -> void {
             if (event.mouseClick())
             {
                 if (activeTool != nullptr) activeTool->unselect();

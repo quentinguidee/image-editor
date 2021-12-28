@@ -14,7 +14,7 @@ ImageEditor::ImageEditor() :
     addView(canvas);
     addView(tools);
 
-    setEventHandler([this](const Event &event) -> void { eventHandler(event); });
+    addEventHandler([this](const Event &event) -> void { eventHandler(event); });
 }
 
 void ImageEditor::draw(SDL_Renderer *renderer, const Position &offset, const Size &maxSize)

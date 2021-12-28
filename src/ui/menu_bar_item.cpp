@@ -11,7 +11,7 @@ MenuBarItem::MenuBarItem(const std::string &text) :
     setPosition(3, 6);
     setBackgroundShape(std::make_shared<RoundedRectangle>(5));
     setFillColor(Color::BACKGROUND_LIGHT);
-    setEventHandler([this](const Event &event) -> void {
+    addEventHandler([this](const Event &event) -> void {
 
     });
 }
