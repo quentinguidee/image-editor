@@ -1,14 +1,12 @@
 #include "toolbar.hpp"
 
-Toolbar::Toolbar() :
-    logo(std::make_shared<Text>("Image Editor"))
+#include <memory>
+
+#include "../ui/menu_bar_item.hpp"
+
+Toolbar::Toolbar()
 {
-    logo->setFont(Font::BOLD);
-    logo->uppercase();
-    logo->setPosition(20, 12);
-
-    setFillColor(Color::BACKGROUND_DARK);
-    setSize(Size1D::INFINITE, 42);
-
-    addView(logo);
+    addView(std::make_shared<MenuBarItem>("File"));
+    addView(std::make_shared<MenuBarItem>("Edit"));
+    addView(std::make_shared<MenuBarItem>("Help"));
 }

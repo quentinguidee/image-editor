@@ -1,14 +1,11 @@
 #ifndef TOOLBAR_HPP
 #define TOOLBAR_HPP
 
-#include "../ui/horizontal_layout.hpp"
-#include "../ui/text.hpp"
+#include "../ui/menu_bar.hpp"
 
-class Toolbar : public HorizontalLayout
+class Toolbar : public MenuBar
 {
 private:
-    std::shared_ptr<Text> logo;
-
 public:
     Toolbar();
     ~Toolbar() {}

@@ -3,6 +3,11 @@
 #include "position.hpp"
 #include "sdl_draw.hpp"
 
+RoundedRectangle::RoundedRectangle(int radius) :
+    radius(radius)
+{
+}
+
 void RoundedRectangle::setRadius(uint8_t radius)
 {
     this->radius = radius;

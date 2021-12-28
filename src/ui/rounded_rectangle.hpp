@@ -6,10 +6,10 @@
 class RoundedRectangle : public Shape
 {
 private:
-    uint8_t radius = 0;
+    uint8_t radius;
 
 public:
-    RoundedRectangle() {}
+    RoundedRectangle(int radius = 5);
     ~RoundedRectangle() {}
 
     void setRadius(uint8_t radius);

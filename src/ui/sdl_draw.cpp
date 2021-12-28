@@ -117,12 +117,12 @@ void SDL::printError()
     std::cerr << SDL_GetError() << std::endl;
 }
 
-void TTF::drawText(SDL_Renderer *renderer, const Font &font, const string &text, Color color, const Position &position)
+Size TTF::drawText(SDL_Renderer *renderer, const Font &font, const string &text, Color color, const Position &position)
 {
-    drawText(renderer, font, text, color, position.x, position.y);
+    return drawText(renderer, font, text, color, position.x, position.y);
 }
 
-void TTF::drawText(SDL_Renderer *renderer, const Font &font, const string &text, Color color, float x, float y)
+Size TTF::drawText(SDL_Renderer *renderer, const Font &font, const string &text, Color color, float x, float y)
 {
     SDL_Surface *surface = TTF_RenderText_Blended(font.getTTFFont(), text.c_str(), color.toSDL());
     if (surface == NULL)
@@ -132,6 +132,8 @@ void TTF::drawText(SDL_Renderer *renderer, const Font &font, const string &text,
     if (texture == NULL)
         SDL::printError();
 
+    Size size = Size(surface->w, surface->h);
+
     SDL_FRect area{x, y, (float)surface->w, (float)surface->h};
 
     if (SDL_RenderCopyF(renderer, texture, NULL, &area))
@@ -139,6 +141,8 @@ void TTF::drawText(SDL_Renderer *renderer, const Font &font, const string &text,
 
     SDL_FreeSurface(surface);
     SDL_DestroyTexture(texture);
+
+    return size;
 }
 
 void TTF::printError()

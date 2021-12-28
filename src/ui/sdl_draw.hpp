@@ -33,8 +33,8 @@ void printError();
 
 namespace TTF {
 
-void drawText(SDL_Renderer *renderer, const Font &font, const string &text, Color color, const Position &position);
-void drawText(SDL_Renderer *renderer, const Font &font, const string &text, Color color, float x, float y);
+Size drawText(SDL_Renderer *renderer, const Font &font, const string &text, Color color, const Position &position);
+Size drawText(SDL_Renderer *renderer, const Font &font, const string &text, Color color, float x, float y);
 
 void printError();
 
