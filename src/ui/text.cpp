@@ -33,6 +33,11 @@ void Text::setFont(const Font &font)
     this->font = font;
 }
 
+Size Text::getSize() const
+{
+    return TTF::getTextSize(font, value);
+}
+
 void Text::uppercase()
 {
     std::transform(value.begin(), value.end(), value.begin(), ::toupper);

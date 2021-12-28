@@ -22,12 +22,12 @@ std::vector<std::shared_ptr<View>> View::getViews()
 
 Position1D View::getX() const
 {
-    return position.x;
+    return getPosition().x;
 }
 
 Position1D View::getY() const
 {
-    return position.y;
+    return getPosition().y;
 }
 
 Position View::getPosition() const
@@ -53,12 +53,12 @@ void View::setPosition(float x, float y)
 
 Size1D View::getWidth() const
 {
-    return size.width;
+    return getSize().width;
 }
 
 Size1D View::getHeight() const
 {
-    return size.height;
+    return getSize().height;
 }
 
 Size View::getSize() const

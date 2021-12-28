@@ -145,6 +145,19 @@ Size TTF::drawText(SDL_Renderer *renderer, const Font &font, const string &text,
     return size;
 }
 
+Size TTF::getTextSize(const Font &font, const string &text)
+{
+    SDL_Surface *surface = TTF_RenderText_Blended(font.getTTFFont(), text.c_str(), {0, 0, 0, 0});
+    if (surface == NULL)
+        TTF::printError();
+
+    Size size = Size(surface->w, surface->h);
+
+    SDL_FreeSurface(surface);
+
+    return size;
+}
+
 void TTF::printError()
 {
     std::cerr << TTF_GetError() << std::endl;

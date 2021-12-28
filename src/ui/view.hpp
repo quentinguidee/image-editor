@@ -45,7 +45,7 @@ public:
     // Size
     Size1D getWidth() const;
     Size1D getHeight() const;
-    Size getSize() const;
+    virtual Size getSize() const;
 
     virtual void setWidth(float value);
     virtual void setHeight(float value);

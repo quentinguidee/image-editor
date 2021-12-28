@@ -36,6 +36,8 @@ namespace TTF {
 Size drawText(SDL_Renderer *renderer, const Font &font, const string &text, Color color, const Position &position);
 Size drawText(SDL_Renderer *renderer, const Font &font, const string &text, Color color, float x, float y);
 
+Size getTextSize(const Font &font, const string &text);
+
 void printError();
 
 }  // namespace TTF

@@ -26,6 +26,8 @@ public:
     void setTextColor(const Color &color);
     void setFont(const Font &font);
 
+    Size getSize() const override;
+
     void uppercase();
 };
 
